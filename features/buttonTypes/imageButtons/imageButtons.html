@@ -1,0 +1,90 @@
+{% assign instanceName = buildPageFeatureData.imageButtons %}
+{% assign siteFeatures = site.documents | where:'imageButtons', instanceName %}
+
+<style>
+.imageButtons__container{
+  display: grid;
+  /* grid-template-columns: 1fr 1fr; */
+  grid-template-columns: repeat(auto-fit, minmax(475px, 1fr));
+  grid-gap: clamp(1rem, 3vw, 5rem);
+}
+.imageButton__container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  /* max-width: clamp(200px, 33vw, 1000px); */
+  margin: auto;
+  text-align: center;
+}
+.content-heading{
+
+}
+.imageButton__title{
+  color: white;
+  font-size: clamp(1rem, 1rem + 100%, 5rem);
+  text-shadow: 1px 1px 5px #000000;
+  grid-row: 1;
+  grid-column: 2;
+}
+.partner-description{
+
+}
+.imageButton__image-wrapper{
+  grid-column: 1 / span 3 ;
+  grid-row: 1 / span 3 ;
+
+}
+.imageButton__image-wrapper img{
+  width: 100%;
+}
+.imageButton__content-wrapper{
+  grid-column: 1 / span 3 ;
+  grid-row: 1 / span 3 ;
+  display: grid;
+  grid-template-columns: 1fr 20fr 1fr;
+  grid-template-rows: minmax(50px,1fr) minmax(100px, 1fr) minmax(75px,140px);
+  align-items: center;
+}
+.imageButton__description {
+  color: white;
+  grid-row: 2;
+  grid-column: 2;
+}a.overlay__btn{
+  grid-row: 3;
+  grid-column: 2;
+  align-self: stretch;
+}
+{%- for feature-md-css in siteFeatures -%}
+#{{ feature-md-css.cTitle.value | slugify }}__image-wraper{
+background-image: url('{{feature-md-css.cImage.value}}?w=500&ar=3:2&fit=crop&format=auto&q=10&exp=-8&sat=5&blur=70');
+background-repeat: no-repeat;
+background-size: cover;
+}
+{%- endfor -%}
+</style>
+
+
+
+
+
+<h2 class="content-heading">{{buildPageFeatureData.component-heading}}</h2>
+<div class="imageButtons__container">
+  {%- for feature-md in siteFeatures -%}
+  <div>
+    <div class="grid-container">
+      <div class="imageButton__container">
+        <div class="imageButton__image-wrapper"id="{{ feature-md.cTitle.title.value | slugify }}__image-wraper">
+        <img src="{{feature-md.cImage.url.value}}?w=500&ar=3:2&fit=crop&format=auto&q=50&exp=-8&sat=5" alt="{{feature-md.cImage.alt-text.value}}">
+        </div>
+        <div class="imageButton__content-wrapper">
+          <h3 class="imageButton__title">{{feature-md.cTitle.title.value}}</h3>
+          <p class="imageButton__description">{{feature-md.cDescription.description.value | truncate: 160 }}</p>
+          <a class="overlay__btn" href="{% assign linkChar0 = feature-md.cLink.url.value | slice: 0 %}{%- if linkChar0 != 'h' %}{{site.baseurl}}{%- endif %}{{feature-md.cLink.url.value}}">
+            <div class="btn btn__rounded btn__medium btn__clear">Learn More</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {%- endfor -%}
+</div>

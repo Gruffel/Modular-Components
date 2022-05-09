@@ -1,0 +1,33 @@
+{% assign instanceName = buildPageFeatureData.quickLinks %}
+
+{%- if instanceName == "siteWide" -%}
+<section class="max-width__tier-1">
+  <div class="quick-link__wrapper">
+  {%- for siteQuickLink in site.quickLinks -%}
+      <div class="quick-link__link-wrapper">
+        <a href="{% assign linkChar0 = siteQuickLink.quickLink-link | slice: 0 %}{%- if linkChar0 != 'h' -%}{{site.baseurl}}{%- endif %}{{siteQuickLink.quickLink-link}}" target="_blank" class="quick-links__link">
+          <div class="icon {{siteQuickLink.quickLink-icon}} quick-link-icon"></div>
+          <h2>{{siteQuickLink.quickLink-title}}</h2>
+        </a>
+      </div>
+  {%- endfor -%}
+  </div>
+</section>
+
+{%- else -%}
+{% assign siteFeatures = site.documents | where:'quickLinks', instanceName %}
+
+<section class="max-width__tier-1">
+  <div class="quick-link__wrapper">
+  {%- for feature-md in siteFeatures -%}
+      <div class="quick-link__link-wrapper">
+        <a href="{% assign linkChar0 = feature-md.link | slice: 0 %}{%- if linkChar0 != 'h' -%}{{site.baseurl}}{%- endif %}{{feature-md.link}}" target="_blank" class="quick-links__link">
+          <div class="icon {{feature-md.icon}} quick-link-icon" aria-hidden="true" focusable="false"></div>
+          <h2>{{feature-md.title}}</h2>
+        </a>
+      </div>
+  {%- endfor -%}
+  </div>
+</section>
+{%- endif%}
+ 

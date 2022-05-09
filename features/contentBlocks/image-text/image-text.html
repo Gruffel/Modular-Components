@@ -1,0 +1,33 @@
+{% assign instanceName = buildPageFeatureData.image-text %}
+{% assign siteFeatures = site.documents | where:'image-text', instanceName %}
+
+<div class="image-text__wrapper">
+  <section class="max-width__tier-1 primary-textBlock__container">
+    {%- for feature-md in siteFeatures -%}
+      <div class="image-text_flex-container">
+        <div class="image-flex-contents">
+          {%- if feature-md.image-visible == true -%}
+            {%- if feature-md.editable-image-portrait == true -%}
+              <img src="{{feature-md.editable-image}}?fit=fill&fill=blur&w=350&h=233&format=auto"
+                srcset="{{feature-md.editable-image}}?fit=fill&fill=blur&w=350&h=233&format=auto 350w,
+                {{feature-md.editable-image}}?fit=fill&fill=blur&w=750&h=500&format=auto 750w,
+                {{feature-md.editable-image}}?fit=fill&fill=blur&w=1500&h=1000&format=auto 1500w"
+                alt="{{feature-md.editable-image-alt}}" width="750" height="500" loading="lazy" decode="async" style="background-image:url('{{feature-md.editable-image}}?fit=fill&fill=blur&w=750&h=500&auto=compress&q=20&format=auto&blur=70');background-size: cover;"/>
+            {%- else -%}
+              <img src="{{feature-md.editable-image}}?w=500&h=333&format=auto&fit=crop"
+                srcset="{{feature-md.editable-image}}?w=500&h=333&format=auto&fit=crop 500w,
+                {{feature-md.editable-image}}?w=750&h=500&format=auto&fit=crop 750w,
+                {{feature-md.editable-image}}?w=1500&h=1000&format=auto&fit=crop 1500w"
+                alt="{{feature-md.editable-image-alt}}" width="750" height="500" loading="lazy" decode="async" style="background-image:url('{{feature-md.editable-image}}?w=750&h=500&auto=compress&q=20&format=auto&blur=70&fit=crop');background-size: cover;"/>
+            {%- endif %}
+          {%- endif %}
+        </div>
+        <div {%- if feature-md.text-align != nil -%} class="flex-contents-text-{{feature-md.text-align}}" {%- else -%} class="flex-contents" {%- endif %}>
+          <h2>{{feature-md.title}}</h2>
+          {{ feature-md.content }}
+        </div>
+      </div>
+    {%- endfor -%}
+  </section>
+</div>
+

@@ -1,0 +1,283 @@
+{
+  "goblin": {
+    "difficulty": 1,
+    "names":[
+    "krit the speedy",
+    "krat da smart",
+    "doople"
+  ],
+  "loot":[
+    {
+      "name": "worn silver pieces",
+      "valueRange": [5,15],
+      "mustTrade": false
+    },{
+      "name": "goblin wood carving",
+      "valueRange": [3,20],
+      "mustTrade": true,
+      "description":[
+        "the body of one of the goblins has a small wooden figure tucked into its pocket. Its craftsmenship is rough as though it were made by a child, but it seems to depict a figure similar to the dead goblin you took from it, standing over the body of a large serpant... perhaps some sort of trophy? It should be sellable in the local market.",
+        "scattered on the floor next to one of the goblins is a small pendant with a Goblinic ruin etched into it. Probably a good luck charm, though it didn't help much for them. Still, should fetch a small price.",
+        "you pick up a small knot of wood with strange markings etched into the side of it. It doesn't look like Goblinic, but "
+        ]
+    }
+  ],
+  "HPRange": [7,10],
+  "dmgRange": [3,6],
+  "dodgeChance": 20,
+  "xpValue": 5
+  },
+  "kobold": {
+    "difficulty": 1,
+    "names":[
+      "jutharid",
+      "grerndar"
+    ],
+    "loot":[
+      {
+        "name": "worn silver pieces",
+        "valueRange": [10,15],
+        "mustTrade": false
+      },{
+        "name": "Kobold Furs",
+        "valueRange": [7,20],
+        "mustTrade": true,
+        "description":[
+          "One of the slain Kobolds lying on the ground has a satchel filled with hides. Mostly from farm animals, but a few of them are clearly leather harvested from fellow kobolds. You take the satchel, these will sell for lots.",
+          "Looking at the bodies of the fallen, you see a kobold clad in fur as well as scales, such members of the speices are rare, so you skin the monster and add its hide to you pack. merchants in town will pay well for this.",
+          ]
+      }
+    ],
+    "HPRange": [9,15],
+    "dmgRange": [5,8],
+    "dodgeChance": 10,
+    "xpValue": 8
+  },
+  "harpy": {
+    "difficulty": 2,
+    "names":[
+      "Aello",
+      "Okypete",
+      "Nikothoe",
+      "Celaeno"
+    ],
+    "loot":[
+      {
+        "name": "silver pieces",
+        "valueRange": [20,25],
+        "mustTrade": false
+      },{
+        "name": "Harpy Talons",
+        "valueRange": [17,30],
+        "mustTrade": true,
+        "description":[
+          "",
+          ]
+      }
+    ],
+    "HPRange": [12,18],
+    "dmgRange": [7,10],
+    "dodgeChance": 33,
+    "xpValue": 12
+  },
+  "orc": {
+    "difficulty": 2,
+    "names":[
+      "jutharid",
+      "grerndar"
+    ],
+    "loot":[
+      {
+        "name": "battered silver pieces",
+        "valueRange": [25,35],
+        "mustTrade": false
+      },{
+        "name": "Orcish Idol",
+        "valueRange": [22,40],
+        "mustTrade": true,
+        "description":[
+          ""
+          ]
+      }
+    ],
+    "HPRange": [20,25],
+    "dmgRange": [10,18],
+    "dodgeChance": 0,
+    "xpValue": 15
+  },
+  "ogre": {
+    "difficulty": 3,
+    "names":[
+      "jutharid",
+      "grerndar"
+    ],
+    "loot":[
+      {
+        "name": "slimy silver pieces",
+        "valueRange": [40,55],
+        "mustTrade": false
+      },{
+        "name": "Nail of the Ogre",
+        "valueRange": [42,60],
+        "mustTrade": true,
+        "description":[
+          "Legends tell of Ogres having nails that can cure even the dealiest of diseases. Disgusting, but wealthy, you take the nails of ogre you slain, carefully wrapping them in a piece of cloth to make sure they don't touch the rest of your equipment, and put them in your pack."
+          ]
+      }
+    ],
+    "HPRange": [25,50],
+    "dmgRange": [15,30],
+    "dodgeChance": 0,
+    "xpValue": 18
+  },
+  "lesser vampire": {
+    "difficulty": 3,
+    "names":[
+      "jutharid",
+      "grerndar"
+    ],
+    "loot":[
+      {
+        "name": "silver pieces",
+        "valueRange": [55,75],
+        "mustTrade": false
+      },{
+        "name": "Lesser Vampire Blood",
+        "valueRange": [57,80],
+        "mustTrade": true,
+        "description":[
+          "It is well known that vampire blood, even from lesser vampires can be used as a common cure or ingredient for health potions, the apothecary will be pleased you brought some. You filter the vmapire blood into a vial and add it to your pack."
+          ]
+      }
+    ],
+    "HPRange": [25,35],
+    "dmgRange": [25,40],
+    "dodgeChance": 33,
+    "xpValue": 22
+  },
+  "minotaur": {
+    "difficulty": 4,
+    "names":[
+      "jutharid",
+      "grerndar"
+    ],
+    "loot":[
+      {
+        "name": "muddied silver pieces",
+        "valueRange": [60,85],
+        "mustTrade": false
+      },{
+        "name": "Minotaur Horn",
+        "valueRange": [72,90],
+        "mustTrade": true,
+        "description":[
+          ""
+          ]
+      }
+    ],
+    "HPRange": [30,45],
+    "dmgRange": [20,30],
+    "dodgeChance": 10,
+    "xpValue": 28
+  },
+  "illithid": {
+    "difficulty": 4,
+    "names":[
+      "jutharid",
+      "grerndar"
+    ],
+    "loot":[
+      {
+        "name": "silver pieces",
+        "valueRange": [75,105],
+        "mustTrade": false
+      },{
+        "name": "Void Essense",
+        "valueRange": [77,110],
+        "mustTrade": true,
+        "description":[
+          ""
+          ]
+      }
+    ],
+    "HPRange": [20,30],
+    "dmgRange": [40,70],
+    "dodgeChance": 50,
+    "xpValue": 36
+  },
+  "greater vampire": {
+    "difficulty": 5,
+    "names":[
+      "jutharid",
+      "grerndar"
+    ],
+    "loot":[
+      {
+        "name": "silver pieces",
+        "valueRange": [90,125],
+        "mustTrade": false
+      },{
+        "name": "Void Essense",
+        "valueRange": [92,130],
+        "mustTrade": true,
+        "description":[
+          "It is well known that vampire blood, especially from greater vampires can be used as a common cure or ingredient for health potions, the apothecary will be pleased you brought some. You filter the vmapire blood into a vial and add it to your pack."
+          ]
+      }
+    ],
+    "HPRange": [50,70],
+    "dmgRange": [50,80],
+    "dodgeChance": 25,
+    "xpValue": 50
+  },
+  "Drakeling": {
+    "difficulty": 5,
+    "names":[
+      "jutharid",
+      "grerndar"
+    ],
+    "loot":[
+      {
+        "name": "gold's worth of silver peices",
+        "valueRange": [105,145],
+        "mustTrade": false
+      },{
+        "name": "Drake Scales",
+        "valueRange": [107,150],
+        "mustTrade": true,
+        "description":[
+          ""
+          ]
+      }
+    ],
+    "HPRange": [60,90],
+    "dmgRange": [40,60],
+    "dodgeChance": 20,
+    "xpValue": 65
+  },
+  "Young Dragon": {
+    "difficulty": 6,
+    "names":[
+      "jutharid",
+      "grerndar"
+    ],
+    "loot":[
+      {
+        "name": "gold's worth of silver peices",
+        "valueRange": [120,165],
+        "mustTrade": false
+      },{
+        "name": "Drake Scales",
+        "valueRange": [122,170],
+        "mustTrade": true,
+        "description":[
+          ""
+          ]
+      }
+    ],
+    "HPRange": [75,125],
+    "dmgRange": [50,100],
+    "dodgeChance": 10,
+    "xpValue": 80
+  }
+}

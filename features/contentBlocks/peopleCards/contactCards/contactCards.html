@@ -1,0 +1,71 @@
+{% assign instanceName = buildPageFeatureData.contactCards %}
+{% comment %} Sooo.... for the assign contactCards: The 'sort' filter; We could make this a var.. this optional/additional var would have to be on the front matter of initial page creation in the array of information for feature placement
+If we did this we could make it choose between sorting via "name" in the JSON or via the "custom-child-order".
+If there were to be a redesign with this to seperate the First Name and the Last Name this opens opportunity (and a whirlwind of complexity for special case names.. like if they have two lastnames or many more than first middle last...) to order by last or first name.
+If we wanted to open the option of tags that is another idea of creating seperation/ordering (again more possible complexities in this).
+{% endcomment %}
+  {% assign siteFeatures = site.data.contactCards.contacts | sort:'custom-child-order' | where_exp:"item", "item.display contains instanceName" %}
+  <section itemscope itemtype="http://schema.org/Organization" class="max-width__tier-1 contact-cards__wrapper">
+    {% for feature-md in siteFeatures %}
+    {% capture phonenumber %}{{ feature-md.phone }}{% endcapture %}
+    <div itemscope itemtype="http://schema.org/Person">
+      <div class="contact-card">
+        <div class="contact-card__image-wrapper">
+          {% if feature-md.image-visible == true %}
+          <picture>
+            <source srcset="{{feature-md.image}}?w=400&h=400&format=auto&mask=ellipse&fit=facearea" media="(min-width:768px)">
+            <source srcset="{{feature-md.image}}?w=200&h=200&format=auto&mask=ellipse&fit=facearea" media="(min-width:425px)">
+            <source srcset="{{feature-md.image}}?w=200&h=200&format=auto&mask=ellipse&fit=facearea" media="(max-width:479.9px)">
+            <img src="{{feature-md.image}}?w=200&h=200&format=auto&mask=ellipse&fit=facearea" itemprop="image" class="contact-card__image" width="200" height="200" alt="Portrait of {{feature-md.name}}" loading="lazy" />
+          </picture>
+          {% else %}
+          <picture>
+            <source srcset="https://illinois-state-assets.imgix.net/casit/cdn/campus-aerial-red-light-no-image.jpg?w=200&h=200&format=auto&mask=ellipse" media="(min-width:768px)">
+            <source srcset="https://illinois-state-assets.imgix.net/casit/cdn/campus-aerial-red-light-no-image.jpg?w=300&h=300&format=auto&mask=ellipse" media="(min-width:425px)">
+            <source srcset="https://illinois-state-assets.imgix.net/casit/cdn/campus-aerial-red-light-no-image.jpg?w=200&h=200&format=auto&mask=ellipse" media="(max-width:479.9px)">
+            <img src="https://illinois-state-assets.imgix.net/casit/cdn/campus-aerial-red-light-no-image.jpg?w=200&h=200&format=auto&mask=ellipse" itemprop="image" class="contact-card__image" width="200" height="200" alt="Portrait of {{feature-md.name}}" loading="lazy" />
+          </picture>
+          {% endif %}
+        </div>
+
+        <div class="contact-card__contacts">
+          <h3 itemprop="name">{{feature-md.name}}</h3>
+          {% if feature-md.jobTitle-visible == "true" %}
+          <p itemprop="jobTitle" class="contact-card__job-title">{{feature-md.jobTitle}}</p>
+          {% else %}{% endif %}
+          {% if feature-md.title-visible == true %}
+          <p class="contact-card__title">{{feature-md.title}}</p>
+          {% else %}{% endif %}
+          {% if feature-md.subTitle-visible == true %}
+          <p class="contact-card__sub-title">{{feature-md.subTitle}}</p>
+          {% else %}{% endif %}
+          {% if feature-md.phone-visible == true %}
+          <p class="contact-card__phone">
+            <a href="tel:{{phonenumber | slice: 0,9}}" aria-label="{{phonenumber | slice: 0 }} {{phonenumber | slice: 1 }} {{phonenumber | slice: 2 }}. {{phonenumber | slice: 3 }} {{phonenumber | slice: 4 }} {{phonenumber | slice: 5 }}. {{phonenumber | slice: 6 }} {{phonenumber | slice: 7 }} {{phonenumber | slice: 8 }} {{phonenumber | slice: 9 }}." class="contact-card__phone-number" itemprop="telephone">({{phonenumber | slice: 0,3 }}) {{phonenumber | slice: 3,3 }}-{{phonenumber | slice: 6,4 }}</a>
+          </p>
+          {% else %}{% endif %}
+          {% if feature-md.email-visible == true %}
+          <p class="contact-card__email">
+          <a href="mailto:{{feature-md.email}}" itemprop="email" class="contact-card____email-address">{{feature-md.email}}</a>
+          </p>
+          {% else %}{% endif %}
+          {% if feature-md.office-visible == true %}
+          <p class="contact-card__office">
+            {{ feature-md.office }}
+          </p>
+          {% else %}{% endif %}
+          {% if feature-md.website-visible == true %}
+          <p class="contact-card__website">
+          <a href="{{feature-md.website}}" itemprop="url" class="contact-card__website-url" target="_blank">{{feature-md.name}}'s Website</a>
+          </p>
+          {% else %}{% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+
+
+
+
+

@@ -1,0 +1,141 @@
+{
+  "Mason":{
+    "workplaceInfo":{
+      "title": "Web Developer",
+      "fullName": "Mason Bates",
+      "quip": ""
+    },
+    "creatureInfo":{
+      "names": ["The Hobgoblin Knight"],
+      "loot":[{
+        "name": "silver in a treasure trove in the back of the room",
+        "valueRange": [200,400],
+        "mustTrade": false
+      }],
+      "HPRange": [50,100],
+      "dmgRange": [20,40],
+      "dodgeChance": 10,
+      "xpValue": 100
+    }
+  },
+  "Mike":{
+    "workplaceInfo":{
+      "title": "Director of CAS IT",
+      "fullName": "Mike Regilio",
+      "quip": ""
+    },
+    "creatureInfo":{
+      "names": ["The Dragon Heir"],
+      "loot":[{
+        "name": "silver in a treasure trove in the back of the room",
+        "valueRange": [200,400],
+        "mustTrade": false
+      }],
+      "HPRange": [50,100],
+      "dmgRange": [20,40],
+      "dodgeChance": 10,
+      "xpValue": 100
+    }
+
+  },
+  "Lizzy":{
+    "workplaceInfo":{
+      "title": "Web Designer",
+      "fullName": "Lizzy Miller",
+      "quip": ""
+    },
+    "creatureInfo":{
+      "names": ["Zephyr, The Kobold-Dragon Warrior"],
+      "loot":[{
+        "name": "silver in a treasure trove in the back of the room",
+        "valueRange": [200,400],
+        "mustTrade": false
+      }],
+      "HPRange": [50,100],
+      "dmgRange": [20,40],
+      "dodgeChance": 10,
+      "xpValue": 100
+    }
+
+  },
+  "Matheus":{
+    "workplaceInfo":{
+      "title": "Software Developer",
+      "fullName": "Matheus Camara",
+      "quip": ""
+    },
+    "creatureInfo":{
+      "names": ["Curupira Tupi"],
+      "loot":[{
+        "name": "silver in a treasure trove in the back of the room",
+        "valueRange": [200,400],
+        "mustTrade": false
+      }],
+      "HPRange": [50,100],
+      "dmgRange": [20,40],
+      "dodgeChance": 10,
+      "xpValue": 100
+    }
+
+  },
+  "Bob":{
+    "workplaceInfo":{
+      "title": "Lead Back-End Developer",
+      "fullName": "Bob LeGrand",
+      "quip": ""
+    },
+    "creatureInfo":{
+      "names": ["The Great Illithid Wizard"],
+      "loot":[{
+        "name": "silver in a treasure trove in the back of the room",
+        "valueRange": [200,400],
+        "mustTrade": false
+      }],
+      "HPRange": [50,100],
+      "dmgRange": [20,40],
+      "dodgeChance": 10,
+      "xpValue": 100
+    }
+
+  },
+  "Amber":{
+    "workplaceInfo":{
+      "title": "Software Developer",
+      "fullName": "Amber Kull",
+      "quip": ""
+    },
+    "creatureInfo":{
+      "names": ["The Rose Phantom"],
+      "loot":[{
+        "name": "silver in a treasure trove in the back of the room",
+        "valueRange": [200,400],
+        "mustTrade": false
+      }],
+      "HPRange": [50,100],
+      "dmgRange": [20,40],
+      "dodgeChance": 10,
+      "xpValue": 100
+    }
+
+  },
+  "John":{
+    "workplaceInfo":{
+      "title": "Lead Front-End Web Developer",
+      "fullName": "John Turton",
+      "quip": ""
+    },
+    "creatureInfo":{
+      "names": ["Vampire Lord"],
+      "loot":[{
+        "name": "silver in a treasure trove in the back of the room",
+        "valueRange": [200,400],
+        "mustTrade": false
+      }],
+      "HPRange": [75,125],
+      "dmgRange": [50,100],
+      "dodgeChance": 10,
+      "xpValue": 100
+    }
+
+  }
+}

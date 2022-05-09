@@ -1,0 +1,50 @@
+
+{% assign instanceName = buildPageFeatureData.twitterFeed %}
+{% assign siteFeatures = site.documents | where:'twitterFeed', instanceName %}
+
+
+
+  <section id="twitter-feed" class="twitterFeed">
+    <script>
+    var deviceType;
+
+    $(document).ready(function(){
+            if(window.matchMedia("(min-width:922px)").matches){
+              getFeed(4);
+              deviceType = "desktop";
+            }
+            else if(window.matchMedia("(min-width:768px)").matches){
+              getFeed(4);
+              deviceType = "tablet";
+              }
+            else{
+              getFeed(2);
+              deviceType = "mobile";
+            }
+       })
+
+       function getFeed(tweetCount){
+         $.ajax({
+             method: "GET",
+             url: "https://casit.illinoisstate.edu/coins/twitterFeed/"+ tweetCount +"/{{page.feed}}/html"
+         })
+         .done(function(html){
+           $("#twitter-feed").append(html);
+         });
+       }
+
+       $(window).resize(function(){ // refreshes the window if media query size is hit
+         if ($(window).width() >= 768 && deviceType == "mobile") {
+           location.reload();
+         } else if($(window).width() <= 768 && deviceType == "tablet"){
+           location.reload();
+         }else if($(window).width() <= 922 && deviceType == "desktop"){
+           location.reload();
+         }
+       });
+
+    </script>
+
+  </section>
+
+

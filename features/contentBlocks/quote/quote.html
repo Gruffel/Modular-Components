@@ -1,0 +1,42 @@
+{% assign instanceName = buildPageFeatureData.accordion %}
+{% assign siteFeatures = site.documents | where:'quote', instanceName %}
+
+
+    {%- for feature-md in siteFeatures -%}
+
+    {%- if feature-md.feature-layout -%}{% assign layout = feature-md.feature-layout %}{%- else -%}{% assign layout = "imageless" %}{%- endif %}
+    {%- if feature-md.title -%} <h2 class="max-width__tier-1 primary-textBlock__container">{{feature-md.title}}</h2> {%- endif %}
+      <div class="max-width__tier-1 primary-textBlock__container quote-wrapper quoteLayout_{{layout}}">
+        {%- if layout != "imageless" and layout != "imageBehind" -%}
+        <style>
+          .quote__text{
+            grid-area: quote
+          }
+        </style>
+          <div class="quote__image">
+            <img src="{{feature-md.img}}" alt="{{feature-md.imgAlt}}" loading="lazy" decode="async" />
+          </div>
+        {%- elsif layout == "imageBehind" -%}
+          <style>
+            .quoteLayout_imageBehind .quote__text{
+              background: linear-gradient(
+                rgba({{feature-md.image-overlay-shade}}, {{feature-md.image-overlay-shade}}, {{feature-md.image-overlay-shade}}, {{feature-md.image-overlay-transparency}}), 
+                rgba({{feature-md.image-overlay-shade}}, {{feature-md.image-overlay-shade}}, {{feature-md.image-overlay-shade}}, {{feature-md.image-overlay-transparency}})
+              ),
+              url("{{feature-md.img}}");
+              background-repeat: no-repeat;
+              background-size: cover;
+              grid-template-columns: 1fr;
+            }
+          </style>
+        {%- endif %}
+        <div class="quote__text">
+            <div class="icon icon__quote--before"></div>
+            <blockquote class="quote-text">{{feature-md.content}}</blockquote>
+            <div class="icon icon__quote--after"></div>
+        </div>
+      </div>
+    {%- endfor -%}
+
+
+

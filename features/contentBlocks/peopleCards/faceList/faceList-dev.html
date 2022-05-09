@@ -1,0 +1,31 @@
+---
+feature-title: Face List (DEV)
+last-modified: 02/23/2021
+last-modified-by: Mason Bates
+isDeprecated: false
+builtType: Content Blocks
+build-method: Feature-Name Matching (People Card)
+dev-link: /dev/face-list/
+live-example-link:
+---
+
+{% if page.features.FEATURE_NAME != nil %}
+  {% assign instanceName = page.features.FEATURE_NAME %}
+  {% assign people = site.peopleCards.people %}
+
+  <!-- INSERT HTML WRAPPER -->
+
+  {% for person in people %}
+    {% assign pagesPersonShowsUpOn = person.displayedPages %}
+    {% for pageInstanceName in pagesPersonShowsUpOn %}
+      {% if pageInstanceName == instanceName %}
+
+        <!-- INSERT HTML CONTENT -->
+
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+  <!-- CLOSE HTML WRAPPER -->
+
+{% endif %}

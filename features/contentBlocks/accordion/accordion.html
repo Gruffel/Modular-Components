@@ -1,0 +1,15 @@
+
+{% assign instanceName = buildPageFeatureData.accordion %}
+{% assign siteFeatures = site.documents | where:'accordion', instanceName %}
+
+<div class="accordion__wrapper">
+  <div class="accordion_section">
+    {%- for feature-md in siteFeatures -%}
+    <button class="accordion  {% if feature-md.accordion-color -%}{{feature-md.accordion-color}}{%- else -%}red{%- endif %}Accordion">{{ feature-md.title }}</button>
+    <div class="panel">
+      {{ feature-md.content }}
+    </div>
+      </details>
+    {%- endfor -%}
+  </div>
+</div>

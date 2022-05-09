@@ -1,0 +1,91 @@
+{%- if page.features.carousel != nil  -%}
+
+<section class="background__ISU-WEB-black-stripe">
+<div id="logoCarousel" class="max-width__tier-1">
+  <carousel-3d :width="width" :height="height":perspective="30" :space="space" :autoplay="true" :autoplay-timeout="3500" :controls-visible="true" :controls-prev-html="'&#10092;'" :controls-next-html="'&#10093;'"
+               :controls-width="100" :controls-height="60" :display="display">
+    <slide :index="0">
+      <a href="http://wznd.com/" target="_blank"  rel="noopener"><img src="https://illinois-state-assets.imgix.net/casit/communication.illinoisstate.edu/images//carousel/wznd.jpg?w=350&format=auto" alt="WZND logo"  style=""></a>
+    </slide>
+     <slide :index="1">
+      <a href="http://wglt.org/" target="_blank"  rel="noopener"><img src="https://illinois-state-assets.imgix.net/casit/communication.illinoisstate.edu/images/carousel/WGLT.jpg?w=350&format=auto" alt="WGLT logo"  style=""></a>
+    </slide>
+    <slide :index="2">
+      <a href="https://isu10news.com/" target="_blank"  rel="noopener"><img src="https://illinois-state-assets.imgix.net/casit/communication.illinoisstate.edu/images/carousel/10news.jpg?w=350&format=auto" alt="10 news logo"   style=""></a>
+    </slide>
+     <slide :index="3">
+       <a href="/involvement/student-organizations/speech-debate-forensics-union/" target="_blank"  rel="noopener"><img src="https://illinois-state-assets.imgix.net/casit/communication.illinoisstate.edu/images/carousel/forensics.jpg?w=350&format=auto" alt="Speech and Debate Forensics Union logo"  style=""></a>
+    </slide>
+    <slide :index="4">
+      <a href="http://www.videtteonline.com/" target="_blank"  rel="noopener"><img src="https://illinois-state-assets.imgix.net/casit/communication.illinoisstate.edu/images/carousel/vidette.jpg?w=350&format=auto" alt="Vidette logo"  style=""></a>
+    </slide>
+    <slide :index="5">
+      <a href="/involvement/extra-curricular/social-media-analytics-command-center/" target="_blank"  rel="noopener"><img src="https://illinois-state-assets.imgix.net/casit/communication.illinoisstate.edu/images/carousel/smacc.jpg?w=350&format=auto" alt="SMACC logo"  ></a>
+    </slide>
+  </carousel-3d>
+</div>
+</section>
+<script>
+		new Vue({
+  el: '#logoCarousel',
+  data: {
+    slides: 6
+  },
+  components: {
+    'carousel-3d': Carousel3d.Carousel3d,
+    'slide': Carousel3d.Slide
+  },
+  data() {
+    if (window.innerWidth > 1000) {
+    return {
+      display: 5,
+      width: 350,
+      height: 210,
+      space: 300
+    }
+  }else if (window.innerWidth < 700){
+    this.display = 3,
+    this.width = 250,
+    this.height = 135,
+    this.space = 200
+  }else {
+    this.display = 5,
+    this.width = 250,
+    this.height = 145,
+    this.space = 250
+  }
+
+  },
+
+  methods: {
+    onResize() {
+      if (window.innerWidth > 1000) {
+        this.display = 5,
+        this.width = 350,
+        this.height = 210,
+        this.space = 300
+      }else if (window.innerWidth < 700){
+        this.display = 3,
+        this.width = 250,
+        this.height = 135,
+        this.space = 200
+      } else {
+        this.display = 5,
+        this.width = 250,
+        this.height = 145,
+        this.space = 250
+      }
+    }
+
+  },
+
+  created() {
+    window.addEventListener('resize', this.onResize)
+  },
+
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize)
+  }
+})
+</script>
+{%- endif %}

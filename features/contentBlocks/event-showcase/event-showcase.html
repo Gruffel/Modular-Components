@@ -1,0 +1,55 @@
+{% assign instanceName = buildPageFeatureData.accordion %}
+{% assign siteFeatures = site.documents | where:'event-showcase', instanceName %}
+
+<div class="background__square-tiles">
+  <div class="max-width__tier-1 event-showcase__container">
+      <div class="event-showcase__wrapper">
+    {%- for feature-md in siteFeatures -%}
+    {%- if feature-md.event-showcase-title -%}
+      <div><!--this is placeholder till we find a better more permenant solution to this--></div>
+      <h2 style="margin-top:50px;margin-bottom:0px;">{{feature-md.event-showcase-title}}</h2>
+      <div><!--this is placeholder till we find a better more permenant solution to this--></div>
+      {%- endif %}
+
+
+      {% if feature-md.editable-enable == true %}
+      <div class="event-showcase__event">
+
+        <div class="event-showcase__event-display">
+          <div class="event-showcase__image-wrapper">
+            {%- if feature-md.editable-image != nil -%}
+              <picture><img src="{{feature-md.editable-image}}?format=auto&w=200&h=200&fit=crop&crop=faces" width="200" height="200" loading="lazy"/></picture>
+            {%- else -%}
+              <picture><img src="https://illinois-state-assets.imgix.net/casit/biology.illinoisstate.edu/images/graphics/bgtemp3-1.jpg?format=auto&w=200&h=200&fit=crop&crop=faces" width="200" height="200" loading="lazy"/></picture>
+            {%- endif %}
+          </div>
+          <div class="event-showcase__display-text">
+            <div class="event-showcase__title">
+              <h3>{{feature-md.title}}</h3>
+            </div>
+            <div class="event-showcase__text-main">
+              <p>{{feature-md.content}}</p>
+            </div>
+            <div class="event-showcase__link">
+                {%- if feature-md.editable-pdf-link != nil -%}<p><a href="{{feature-md.editable-pdf-link}}" target="_blank">{{feature-md.editable-pdf-title}}</a></p>{%- endif %}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="event-showcase__date-details">
+            {%- if feature-md.editable-event-date-time != nil -%}<p class="event-showcase__details--date"><strong>Date & Time:</strong> {{feature-md.editable-event-date-time}}</p>{%- endif %}
+            {%- if feature-md.editable-building-room != nil -%}<p class="event-showcase__details--room">{{feature-md.editable-building-room}}</p>{%- endif %}
+            {%- if feature-md.editable-virtual-room-link != nil -%}<p class="event-showcase__details--virtual-room"><a href="{{feature-md.editable-virtual-room-link}}" class="btn btn__red-white btn__small" style="margin:0;">Zoom Link</a></p>{%- endif %}
+          </div>
+        </div>
+
+      </div>
+      {%- endif %}
+    {%- endfor -%}
+  </div>
+</div>
+
+
+
+

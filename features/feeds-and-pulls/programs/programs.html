@@ -1,0 +1,48 @@
+{%comment%}
+
+This feature uses these front matter variables in the head of the building page.
+  programType:
+  program:
+
+Example of some uses:
+  # programs variables
+  programType: masters
+  program: iosoc_masters
+
+
+{%endcomment%}
+
+    <script>
+    $(document).ready(function(){
+           console.log("Getting course info...");
+           $.ajax({
+               method: "GET",
+               url: "https://casit.illinoisstate.edu/coins/courses/{{page.programType}}/{{site.department-number}}/{{page.program}}"
+           })
+           .done(function(html){
+               console.log(html);
+               $("#results").append(html);
+               $('#tabs-accord').easyResponsiveTabs({
+                 type: 'default', {%comment%}// Types: default, vertical, accordion{%endcomment%}
+                 width: '100%', {%comment%}// auto or any width like 600px{%endcomment%}
+                 fit: false, {%comment%}// 100% fit in a container{%endcomment%}
+                 closed: false, {%comment%}// closes all tabs upon load{%endcomment%}
+                 init_class: 'resp-tabs-init', {%comment%}// class that gets removed once script is done loading{%endcomment%}
+                 hash_override_close: true, {%comment%}// If set to close, a targeted tab in the hash (anchor) will override option and show tab{%endcomment%}
+                 slideSpeed: 400, {%comment%}// Animation speed in ms of the accordion slide effects{%endcomment%}
+                 keyboard: true, {%comment%}// Controls keyboard operation, required for accessibility{%endcomment%}
+                 history: true, {%comment%}// Use browser history to update the tabs state{%endcomment%}
+                 active_priority: 'hash', {%comment%}// Types: hash, markup - determines is the hash or markup should take priority when determining which tab to show on load{%endcomment%}
+                 activate: function() {}, {%comment%}// Callback function, gets called if tab is switched{%endcomment%}
+                 slideUpComplete: function() {}, {%comment%}// Callback function, gets called when accordion slide up is complete{%endcomment%}
+                 slideDownComplete: function() {}, {%comment%}// Callback function, gets called when accordion slides down is complete{%endcomment%}
+                 init: function() {}, {%comment%}// Callback function, gets called before script starts processing{%endcomment%}
+                 complete: function() {} {%comment%}// Callback function, gets called after script is done processing{%endcomment%}
+               });
+           });
+       })
+    </script>
+    <section class="max-width__tier-1"><div id="results"></div></section>
+    <script src="/assets/script/pageTabs.js"></script> 
+    {%comment%} We may want to try to do 'defer' here on this link. {%endcomment%}
+

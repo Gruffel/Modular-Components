@@ -1,0 +1,51 @@
+{
+  "inn":{
+    "actions":[
+      "rest"
+    ],
+    "items":[
+      "bread",
+      "ale"
+    ],
+    "willBuyLoot": false
+  },
+  "woodsman":{
+    "actions":[],
+    "items":[
+      "bow",
+      "staff",
+      "arrows"
+    ],
+    "willBuyLoot": true
+  },
+  "weaponsmith":{
+    "actions":[],
+    "items":[
+      "dagger",
+      "longsword",
+      "greatsword"
+    ],
+    "willBuyLoot": true
+  },
+  "armorer":{
+    "actions":[],
+    "items":[
+      "padded cloth armor",
+      "chainmail shirt",
+      "partial platemail",
+      "full platemail"
+    ],
+    "willBuyLoot": true
+  },
+  "apothecary":{
+    "actions":[],
+    "items":[
+      "essence of winter",
+      "essence of summer",
+      "essence of spring",
+      "essence of fall",
+      "potion of healing"
+    ],
+    "willBuyLoot": true
+  }
+}

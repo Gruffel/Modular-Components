@@ -1,0 +1,48 @@
+
+{%- if page.features.billboard != nil -%}
+
+    <div class="billboard-wrapper max-width__tier-1">
+      <div class="billboard-content ">
+        <picture>
+          <source srcset="{{page.editable-background-image}}?w=1920&ar=18:9&fit=crop&format=auto&dpr=1&exp=-7&sat=25 1x, {{page.editable-background-image}}?w=1920&ar=18:9&fit=crop&format=auto&dpr=2&exp=-10&sat=25 2x, {{page.editable-background-image}}?w=1920&ar=18:9&fit=crop&format=auto&dpr=3&exp=-10&sat=25 3x" media="(min-width:1200px)">
+          <source srcset="{{page.editable-background-image}}?w=1200&ar=18:9&fit=crop&format=auto&q=85&dpr=1&exp=-7&sat=25 1x, {{page.editable-background-image}}?w=1200&ar=18:9&fit=crop&format=auto&q=85&dpr=2&exp=-10&sat=25 2x, {{page.editable-background-image}}?w=1200&ar=18:9&fit=crop&format=auto&q=85&dpr=3&exp=-10&sat=25 3x" media="(min-width:750px)" >
+          <source srcset="{{page.editable-background-image}}?w=750&ar=18:9&fit=crop&format=auto&q=75&dpr=1&exp=-7&sat=25 1x, {{page.editable-background-image}}?w=750&ar=18:9&fit=crop&format=auto&q=75&dpr=2&exp=-10&sat=25 2x, {{page.editable-background-image}}?w=750&ar=18:9&fit=crop&format=auto&q=75&dpr=3&exp=-10&sat=25 3x" media="(min-width:480px)" >
+          <source srcset="{{page.editable-background-image}}?w=200&ar=18:9&fit=crop&format=auto&q=75&dpr=1&exp=-10&sat=25 1x, {{page.editable-background-image}}?w=200&ar=18:9&fit=crop&format=auto&q=75&dpr=2&exp=-10&sat=25 2x, {{page.editable-background-image}}?w=200&ar=18:9&fit=crop&format=auto&q=75&dpr=3&exp=-10&sat=25 3x" media="(max-width: 479.9px)" >
+          <img src="{{page.editable-background-image}}?fw=1920&ar=18:9&fit=crop&format=auto&exp=-7&sat=25" alt="{{page.editable-background-image-alt}}" loading="lazy"/>
+        </picture>
+        <div class="billboard-title"><h1>{{page.editable-billboard-title}}</h1></div>
+        <div class="billboard-subtitle">{{page.editable-billboard-subtitle}}</div>
+
+        <div class="billboard-buttons">
+        <!-- <div class=""> -->
+
+          {%- if page.editable-layout == "1x1" -%}
+          <div class="billboard-1x1-layout btn">
+            <a class="btn btn__large btn__clear" href="{% assign linkChar0 = page.editable-button1-link | slice: 0 %}{%- if linkChar0 != 'h' -%}{{site.baseurl}}{%- endif %}{{page.editable-button1-link}}" {%- if page.editable-button1-newTab == 1 -%} target="_blank" {%- endif %}><h2>{{page.editable-button1-text}}</h2></a>
+          </div>
+
+          {%- elsif page.editable-layout == "2x1" -%}
+          <div class="">
+            <a class="" href="{% assign linkChar0 = page.editable-button1-link | slice: 0 %}{%- if linkChar0 != 'h' -%}{{site.baseurl}}{%- endif %}{{page.editable-button1-link}}" {%- if page.editable-button1-newTab == 1 -%} target="_blank" {%- endif %}><div class="btn btn__large btn__rounded btn__clear"><h2>{{page.editable-button1-text}}</h2></div></a>
+            <a class="" href="{% assign linkChar0 = page.editable-button2-link | slice: 0 %}{%- if linkChar0 != 'h' -%}{{site.baseurl}}{%- endif %}{{page.editable-button2-link}}" {%- if page.editable-button2-newTab == 1 -%} target="_blank" {%- endif %}><div class="btn btn__large btn__rounded btn__clear"><h2>{{page.editable-button2-text}}</h2></div></a>
+          </div>
+
+          {%- elsif page.editable-layout == "3x1" -%}
+          <div class="billboard-3x1-layout btn">
+            <a class="btn btn__large btn__clear" href="{% assign linkChar0 = page.editable-button1-link | slice: 0 %}{%- if linkChar0 != 'h' -%}{{site.baseurl}}{%- endif %}{{page.editable-button1-link}}" {%- if page.editable-button1-newTab == 1 -%} target="_blank" {%- endif %}><h2>{{page.editable-button1-text}}</h2></a>
+            <a class="btn btn__large btn__clear" href="{% assign linkChar0 = page.editable-button2-link | slice: 0 %}{%- if linkChar0 != 'h' -%}{{site.baseurl}}{%- endif %}{{page.editable-button2-link}}" {%- if page.editable-button2-newTab == 1 -%} target="_blank" {%- endif %}><h2>{{page.editable-button2-text}}</h2></a>
+            <a class="btn btn__large btn__clear" href="{% assign linkChar0 = page.editable-button3-link | slice: 0 %}{%- if linkChar0 != 'h' -%}{{site.baseurl}}{%- endif %}{{page.editable-button3-link}}" {%- if page.editable-button3-newTab == 1 -%} target="_blank" {%- endif %}><h2>{{page.editable-button3-text}}</h2></a>
+          </div>
+
+          {%- elsif page.editable-layout == "1x3" -%}
+          <div class="billboard-1x3-layout btn">
+            <a class="btn btn__large btn__clear" href="{% assign linkChar0 = page.editable-button1-link | slice: 0 %}{%- if linkChar0 != 'h' -%}{{site.baseurl}}{%- endif %}{{page.editable-button1-link}}" {%- if page.editable-button1-newTab == 1 -%} target="_blank" {%- endif %}><h2>{{page.editable-button1-text}}</h2></a>
+            <a class="btn btn__large btn__clear" href="{% assign linkChar0 = page.editable-button2-link | slice: 0 %}{%- if linkChar0 != 'h' -%}{{site.baseurl}}{%- endif %}{{page.editable-button2-link}}" {%- if page.editable-button2-newTab == 1 -%} target="_blank" {%- endif %}><h2>{{page.editable-button2-text}}</h2></a>
+            <a class="btn btn__large btn__clear" href="{% assign linkChar0 = page.editable-button3-link | slice: 0 %}{%- if linkChar0 != 'h' -%}{{site.baseurl}}{%- endif %}{{page.editable-button3-link}}" {%- if page.editable-button3-newTab == 1 -%} target="_blank" {%- endif %}><h2>{{page.editable-button3-text}}</h2></a>
+          </div>
+          {%- endif %}
+        </div>
+      </div>
+    </div>
+
+{%- endif %}

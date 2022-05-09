@@ -1,0 +1,132 @@
+
+
+<p style="text-align: center;margin-bottom:2rem;">This page shows recent works by faculty in the School. For more complete listings of works please see our <a href="https://communication.illinoisstate.edu/faculty/?title=facultyinstructionalstaff#&page=Professors%20And%20Instructional%20Faculty">faculty profile pages</a>.</p>
+<div class="post-content">   <!-- Inserts content of markdown files or content of linked html page -->
+    <div class="searchBar">
+      <form id="searchBar" class="publications__search" onsubmit="onSearchSubmitted(true);return false;">
+        <label for="searchType" class="visuallyhidden">Choose what to search by.</label>
+        <select name="searchType" id="searchType">
+          <option value="all">All</option>
+          <option value="title">Title</option>
+          <option value="author">Author</option>
+          <option value="publisher">Publisher</option>
+        </select>
+
+        <label for="ResultsNum" class="visuallyhidden">Choose how many results per page.</label>
+        <select name="results Shown" id="ResultsNum" onchange="onSearchSubmitted()">
+          <option value="10">Show 10 results</option>
+          <option value="25">Show 25 results</option>
+          <option value="50">Show 50 results</option>
+          <option value="100">Show 100 results</option>
+        </select>
+        <div class="publications__search-bar-wrapper" role="search">
+        <input type="text" class="researchSearch" name="searchBar" placeholder="filter by search">
+        <!-- <input type="submit" value="Search" class="researchSubmit search-submit btn btn__red btn__medium"> -->
+        <button type="submit" value="Search" class="researchSubmit search-submit btn btn__red btn__medium">Search</button>
+
+        </div>
+
+
+      </form>
+      <div class="research__utility-button-wrapper">
+
+      <button type="button" class="researchSubmit printOptions btn btn__red-white btn__small icon icon__share-fill--before" name="Share Search Results" onclick="copyClipboardLink()"> Share Search Results</button>
+      <!-- </div> -->
+      <!-- <div> -->
+        <button type="button" class="researchSubmit printOptions btn btn__red-white btn__small icon icon__refresh--before" name="Reset Filters" onclick="window.location.href = '/publications/';">Reset Filters</button>
+      <button type="button" class="researchSubmit printOptions btn btn__red-white btn__small icon icon__print--before" name="Print" onclick="viewPrinterVersion()">Print</button>
+      </div>
+      <!-- Open Linkable Page -->
+
+    </div>
+
+  <section class="searchsideBar">
+    <h2>OPTIONS</h2>
+    <div class="search-options-wrapper">
+    <div class="sortOptions">
+
+      <form id="sortOptions">
+        <fieldset>
+          <!-- <h3><legend>Sort By</legend></h3> -->
+          <legend><h3>Sort By</h3></legend>
+
+          <input type="radio" id="date" name="sortBy" role="radio" value="date" checked onclick="onSearchSubmitted(true)">
+                <label for="date">Date</label>
+        <br>
+
+          <input type="radio" id="title" name="sortBy" role="radio" value="title" onclick="onSearchSubmitted(true)">
+                  <label for="title">Title</label>
+        <br>
+
+
+          <input type="radio" id="author" name="sortBy" role="radio" value="author" onclick="onSearchSubmitted(true)">
+                  <label for="author">Author</label>
+      </fieldset>
+      </form>
+    </div>
+
+    <div class="filterOptions">
+      <h3>Filter By</h3>
+      <div class="filterOptions__options-wrapper">
+        <div id="filterOptions__options-date">
+          <h4>Date</h4>
+          <p>Publications from the past:</p>
+          <label for="dateFilter" class="visuallyhidden">Choose how much time to filter by.</label>
+          <input type="text" id="dateFilter" name="dateFilterInput" placeholder="12" value="12">
+          <label for="dateFilterUnit" class="visuallyhidden">Choose the unit of time to filter by.</label>
+          <select name="dateFilterUnit" id="dateFilterUnit">
+            <option value="1">months</option>
+            <option value="12">years</option>
+          </select>
+        </div>
+        <div id="filterOptions__options-type">
+          <h4>Type</h4>
+          <label for="typeList" class="visuallyhidden">Choose what type to filter by.</label>
+          <select name="searchType" id="typeList">
+            <option value="all">all</option>
+
+          </select>
+          </div>
+
+          <div id="filterOptions__options-student">
+            <h4>Student Level</h4>
+            <select name="studentLevel" id="studentLevel">
+            <option value="any">all</option>
+    
+            </select>
+            </div>	
+
+        <div id="filterOptions__options-tag">
+      <form>
+      <fieldset>
+      <legend><h4>Tag</h4><legend>
+      <div id="tagList">
+
+      </div>
+      <fieldset>
+      <form>
+      </div>
+
+      </div>
+    </div>
+  </div>
+<div class="filterOptions__buttons">
+    <button type="button" class="researchSubmit btn btn__red-white btn__small apply-filter" name="PrintButton" onclick="onSearchSubmitted(true)">Apply Filter</button>
+    <button type="button" id="desktop-reset" class="researchSubmit printOptions btn btn__red-white btn__small icon icon__refresh--before" name="Reset Filters" onclick="window.location.href = '/publications/';">Reset Filters</button>
+
+  </div>
+  </section>
+
+  <div id="results">
+    <h2>LOADING RESULTS...</H2>
+  </div>
+
+</div>       <!-- Ends post-content -->
+
+
+<script src="https://casit.illinoisstate.edu/cdn/js/research-publications/research-searchOptions.js">
+</script>
+  <script>
+    _initSearch({{site.department-number}}, "/faculty/profile/");
+  </script>  
+</div>

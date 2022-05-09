@@ -1,0 +1,30 @@
+
+
+
+{% assign instanceName = buildPageFeatureData.twoColumn-reactive %}
+{% assign siteFeatures = site.documents | where:'twoColumn-reactive', instanceName %}
+<div class="twoColumn-reactive__container max-width__tier-1"><span class="twoColumn-reactive__container--marginCleaner"></span>
+  {%- for feature-md in siteFeatures -%}
+    {{ feature-md.content }}
+  {%- endfor -%}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

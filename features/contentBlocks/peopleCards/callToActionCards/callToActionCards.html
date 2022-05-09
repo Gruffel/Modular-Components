@@ -1,0 +1,93 @@
+{% comment %}
+Details of Feature/Component
+
+**Feature content building type:**
+
+
+
+**Front Matter Properties**
+name: [ String ]
+title: [ String ]
+advises: [ String ]
+advisor-link: [ String ]
+image: [ String ]
+email: [ String ]
+drop-in-days-visible: [ Boolean ]
+drop-in-days: [ String ]
+drop-in-hours: [ String ]
+zoom-link-visible: [ Boolean ]
+zoom-link: [ String ]
+
+
+{% endcomment %}
+
+{% comment %}
+{% assign instanceName = buildPageFeatureData.callToActionCards %}
+{% assign siteFeatures = site.data.callToActionCard.cards | where:'page', instanceName %}
+{% endcomment %}
+{% assign gridNumberI = 0 %}
+{% assign instanceName = buildPageFeatureData.callToActionCards %}
+{% assign siteFeatures = site.documents | where:'callToActionCards', instanceName %}
+
+{% comment %}
+<!-- Does this need to be inline? -->
+{% endcomment %}
+<style> 
+    .call-to-action-card__virtual-drop-ins-wrapper p {
+        margin: 0.3rem;
+    }
+
+    .call-to-action-cards__wrapper{
+        display: grid;
+        grid-template-columns:{% for feature-md in siteFeatures %}{% assign gridNumberI = gridNumberI | plus: 1 %}{% if gridNumberI < 5 %} 1fr{% endif %}{% endfor %};
+
+    }
+
+</style>
+
+<div class=" padding-1">
+    <section class="max-width__tier-1">
+        <div class="call-to-action-cards__wrapper">
+
+            {%- for feature-md in siteFeatures -%}
+
+            <div class="call-to-action-card {% cycle 'odd', 'even' %}">
+                <div class="call-to-action-card__title-wrapper">
+                    <h3>{{feature-md.name}}</h3>
+                    <p class="call-to-action-card__title">{{feature-md.title}}</p>
+                    <div class="call-to-action-card__advising-wrapper">
+                        <h4>Advises:</h4>
+                        <p>{{feature-md.advises}}</p>
+                    </div>
+                </div>
+                <div class="call-to-action-card__portrait-wrapper">
+                    <a href="{{feature-md.advisor-link}}" class="call-to-action-card__call-to-action-link">
+                        
+                          
+                            <img class="call-to-action-card__portrait" src="{{feature-md.image}}?w=322&h=482&fit=facearea&auto=format" width="322" height='482' alt="{{feature-md.name}}'s portrait." loading="lazy" />
+                        
+
+                        <div class="call-to-action-card__action-wrapper">
+                            <div class="call-to-action-card__action-button">
+                                Schedule with<br>{{feature-md.name}}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <p><a href="mailto:{{feature-md.email}}" class="icon icon__email--before call-to-action-card__email" target="_blank">{{feature-md.email}}</a></p>
+                <div class="call-to-action-card__virtual-drop-ins-wrapper">
+                    <h4>Virtual Drop In Hours</h4>
+                    <div class="call-to-action-card__virtual-drop-ins-hours">
+                        <p>{%- if feature-md.drop-in-days-visible == true -%}{{ feature-md.drop-in-days }} | {{ feature-md.drop-in-hours }}{%- elsif feature-md.drop-in-days-visible == false -%}TBA{%- endif %}</p>
+                    </div>
+                    {%- if feature-md.zoom-link-visible == true -%}
+                    <div>
+                        <p><a href="{{ feature-md.zoom-link }}" class="btn btn__small btn__rounded btn__gray-white">Virtually Drop In</a></p>
+                    </div>
+                    {%- endif %}
+                </div>
+            </div>
+            {%- endfor -%}
+        </div>
+    </section>
+</div>

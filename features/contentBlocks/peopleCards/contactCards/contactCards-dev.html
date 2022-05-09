@@ -1,0 +1,68 @@
+---
+feature-title: Contact Cards (Dev)
+last-modified: 02/23/2021
+last-modified-by: Mason Bates
+isDeprecated: false
+builtType: Content Blocks
+build-method: Feature-Name Matching (People Card)
+dev-link: /dev/contact-cards/
+live-example-link:
+---
+
+{% if page.features.contactCards-dev != nil %}
+  {% assign instanceName = page.features.contactCards-dev %}
+  {% assign people = site.data.peopleCards.people %}
+
+  <!-- INSERT HTML WRAPPER -->
+  <section itemscope itemtype="http://schema.org/Organization" class="max-width__tier-1 contact-cards__wrapper">
+
+  {% for person in people %}
+  <h2>{{person.name}}</h2>
+  {{person}}
+    {% assign pagesPersonShowsUpOn = person.displayedPages %}
+    {% for pageInstanceName in pagesPersonShowsUpOn %}
+      {% if pageInstanceName == instanceName %}
+        <!-- INSERT HTML CONTENT -->
+
+        {% capture phonenumber %}{{ person.contactInformation.phone }}{% endcapture %}
+        <div itemscope itemtype="http://schema.org/Person">
+          <div class="contact-card">
+            <div class="contact-card__image-wrapper">
+              {% if person.image != "" %}
+              <picture>
+                <source srcset="{{person.image}}?w=200&format=auto&mask=ellipse" media="(min-width:768px)">
+                <source srcset="{{person.image}}?w=200&format=auto&mask=ellipse" media="(min-width:425px)">
+                <source srcset="{{person.image}}?w=200&format=auto&mask=ellipse" media="(max-width:479.9px)">
+                <img src="{{person.image}}?fw=400&format=auto&mask=ellipse" itemprop="image" class="contact-card__image" alt="Portrait of {{person.name}}" loading="lazy" />
+              </picture>
+              {% else %}
+              <picture>
+                <source srcset="https://illinois-state-assets.imgix.net/casit/cdn/campus-aerial-red-light-no-image.jpg?w=200&format=auto&mask=ellipse" media="(min-width:768px)">
+                <source srcset="https://illinois-state-assets.imgix.net/casit/cdn/campus-aerial-red-light-no-image.jpg?w=300&format=auto&mask=ellipse" media="(min-width:425px)">
+                <source srcset="https://illinois-state-assets.imgix.net/casit/cdn/campus-aerial-red-light-no-image.jpg?w=200&format=auto&mask=ellipse" media="(max-width:479.9px)">
+                <img src="https://illinois-state-assets.imgix.net/casit/cdn/campus-aerial-red-light-no-image.jpg?fw=400&format=auto&mask=ellipse" itemprop="image" class="contact-card__image" alt="Portrait of {{person.name}}" loading="lazy" />
+              </picture>
+              {% endif %}
+            </div>
+
+            <div class="contact-card__contacts">
+              <h3 itemprop="name">{{person.name}}</h3>
+              {% if person.title != "" %}<p class="contact-card__title">{{person.title}}</p>{% endif %}
+              {% if person.featureSpecific.contactCards.subTitle != "" %}<p class="contact-card__sub-title">{{person.featureSpecific.contactCards.subTitle}}</p>{% endif %}
+              {% if person.contactInformation.phone != "" %}<p class="contact-card__phone"><a href="tel:{{phonenumber | slice: 0,9}}" aria-label="{{phonenumber | slice: 0 }} {{phonenumber | slice: 1 }} {{phonenumber | slice: 2 }}. {{phonenumber | slice: 3 }} {{phonenumber | slice: 4 }} {{phonenumber | slice: 5 }}. {{phonenumber | slice: 6 }} {{phonenumber | slice: 7 }} {{phonenumber | slice: 8 }} {{phonenumber | slice: 9 }}." class="contact-card__phone-number" itemprop="telephone">({{phonenumber | slice: 0,3 }}) {{phonenumber | slice: 3,3 }}-{{phonenumber | slice: 6,4 }}</a></p>{% else %}{% endif %}
+              {% if person.contactInformation.email != "" %}<p class="contact-card__email"><a href="mailto:{{person.contactInformation.email}}" itemprop="email" class="contact-card____email-address">{{person.contactInformation.email}}</a></p>{% else %}{% endif %}
+              {% if person.featureSpecific.contactCards.office != "" %}<p class="contact-card__office">{{ person.featureSpecific.contactCards.office }}</p>{% else %}{% endif %}
+              {% if person.featureSpecific.contactCards.website != "" %}<p class="contact-card__website"><a href="{{person.featureSpecific.contactCards.website}}" itemprop="url" class="contact-card__website-url" target="_blank">{{person.name}}'s Website</a></p>{% else %}{% endif %}
+            </div>
+          </div>
+        </div>
+
+
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+  <!-- CLOSE HTML WRAPPER -->
+</section>
+
+{% endif %}

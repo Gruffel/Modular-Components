@@ -1,0 +1,39 @@
+{% assign instanceName = buildPageFeatureData.eventsWebV3 %}
+{%- if instanceName == "siteWide" -%}
+
+
+<script>
+	$(document).ready(function(){
+		console.log("Getting faculty info...");
+		$.ajax({
+			method: "GET",
+			url: "https://casit.illinoisstate.edu/coins/news/{{site.department-number}}/events"
+		})
+		.done(function(html){
+			console.log("done");
+			$("#events_results").append(html);
+		});
+	})
+</script>
+
+
+{%- else -%}
+{% assign siteFeatures = site.documents | where:'eventsWebV3', instanceName %}
+
+<script>
+	$(document).ready(function(){
+		console.log("Getting faculty info...");
+		$.ajax({
+			method: "GET",
+			url: "https://casit.illinoisstate.edu/coins/news/{{instanceName}}/events"
+		})
+		.done(function(html){
+			console.log("done");
+			$("#events_results").append(html);
+		});
+	})
+</script>
+<div id='events_results'></div>
+
+
+{%- endif %}

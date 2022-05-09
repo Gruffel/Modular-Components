@@ -1,0 +1,32 @@
+
+{% assign instanceName = buildPageFeatureData.makeAGift %}
+
+{%- if instanceName == "siteWide" -%}
+
+<section id="makeAGift" class="makeAGift-home-2 max-width__tier-1">
+  <div class="makeAGift-img" ></div>
+  <div class="makeAGift-text">
+    <h2>{{site.make-a-gift_title | truncatewords: 10}}</h2>
+    <p>{{site.make-a-gift_body-copy | truncatewords: 25 }}</p>
+    <a href="{{site.make-a-gift_link-url}}" class="btn" target="_blank" rel="noopener">{{ site.make-a-gift_link-text | truncatewords: 15 }}</a>
+  </div>
+</section>
+
+{%- else -%}
+
+{% assign siteFeatures = site.documents | where:'makeAGift', instanceName %}
+{%- for feature-md in siteFeatures -%}
+
+<section id="makeAGift" class="makeAGift-home-2 max-width__tier-1">
+  <div style="background-image:url('{{feature-md.make-a-gift-image}}');width: auto;height: 100%;background-position: 65%;background-repeat: no-repeat;background-size: cover"></div>
+  <div class="makeAGift-text">
+    <h2>{{feature-md.make-a-gift_title | truncatewords: 10}}</h2>
+    <p>{{feature-md.make-a-gift_body-copy | truncatewords: 25 }}</p>
+    <a href="{{feature-md.make-a-gift_link-url}}" class="btn" target="_blank" rel="noopener">{{ feature-md.make-a-gift_link-text | truncatewords: 15 }}</a>
+  </div>
+</section>
+
+{%- endfor -%}
+
+{%- endif %}
+

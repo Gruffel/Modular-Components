@@ -1,0 +1,47 @@
+
+{%comment%}
+Functions as a site wide item not as a feature specific item yet.
+Currently requires an .xslt file, a search collection, a search page, and uses the input field found in the search bar in the header for all searches.
+
+Now the search bar in the header will redirect to the /search/ page... which makes this as a feature super pointless at the moment. 
+It only searches the website it is on.. and can not be changed with the current set up.
+
+
+We would need to decouple the search bar in the header from the search engine/process and then from there we would be able to point it to custom locations.
+
+{%endcomment%}
+
+<div class="post-content">   <!-- Inserts content of markdown files or content of linked html page -->
+  <div id="results">
+
+  </div>
+</div>       <!-- Ends post-content -->
+
+
+  <script>
+
+  $(document).ready( function() {
+    var q = getUrlVars()["q"];
+    var as_sitesearch = getUrlVars()["as_sitesearch"];
+    var start = "";
+    if (getUrlVars()["start"] != undefined && getUrlVars()["start"] != {}) {
+    start = "&start=" + getUrlVars()["start"];
+    }
+    $.ajax({
+      method: "GET",
+      url: "https://casit.illinoisstate.edu/coins/search/?site=isu_collection&client=isu_collection&clientID=Illinois+State+University&output=xml_no_dtd&filter=0&q=" + q +"&as_sitesearch="+ as_sitesearch + start
+    }).done(function(html){
+      console.log("done");
+      $("#results").append(html);
+    });
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&#]*)/gi, function(m,key,value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
+  });
+  </script>
+</div>
+

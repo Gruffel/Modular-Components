@@ -1,0 +1,27 @@
+
+{% assign instanceName = buildPageFeatureData.bannerButtons %}
+{% assign siteFeatures = site.documents | where:'bannerButtons', instanceName %}
+
+        {%comment%}<div class="button-banner__wrapper button-image__chevron">
+          Note: This system.. it has an issue and closes the wrapping container prior to any of the content
+        {%endcomment%}
+    {% assign currentTitle = "" %}
+
+    {%- for feature-md in siteFeatures -%}
+        {%- if feature-md.button-set-title != currentTitle -%}
+        {%- if feature-md != bannerButtonFiles.first -%}</div>{%- endif %}
+        <h2 class="button-banner__section-title">{{feature-md.button-set-title}}</h2>
+          <div class="button-banner__button-wrapper max-width__tier-1">
+        {%- endif %}
+            {%- if feature-md.link -%} {% assign link = feature-md.link %}{% elsif feature-md.permalink %}{% assign link = feature-md.permalink %}{%- endif %}
+            {%- if feature-md.button-text -%} {% assign button-text = feature-md.button-text %}{%- elsif feature-md.title -%}{% assign button-text = feature-md.title %}{%- endif %}
+            
+            <a href="{{ link }}" class="btn btn__red-white btn__medium btn__rounded" target="_blank" rel="noopener">{{ button-text }}</a>
+
+
+        {% assign currentTitle = feature-md.button-set-title %}
+        {%comment%} {% if feature-md == bannerButtonFiles.last %}
+          </div>
+        {% endif %}{%endcomment%}
+    {%- endfor -%}
+  {%comment%}</div>{%endcomment%}

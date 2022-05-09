@@ -1,0 +1,53 @@
+{% comment %}
+Details of Feature/Component
+
+**Feature content building type:**
+    Markdown
+
+**Front Matter Properties**
+    image-visible: [ boolean ]
+    image: [ string ]
+    image-alt: [ string ]
+    name: [ string ]
+    job-title: [ string ]
+    item: [ string ]
+    content: [ Mark Down file content | string ]
+
+{% endcomment %}
+{% assign instanceName = buildPageFeatureData.bioCards %}
+{% assign siteFeatures = site.documents | where:'bioCards', instanceName %}
+<div class="bioCards__wrapper">
+    <section class="max-width__tier-1">
+
+        {%- for feature-md in siteFeatures -%}
+        <div class="bioCards__content" itemscope itemtype="http://schema.org/Person">
+            <picture class="bioCards__picture">
+                {%- if feature-md.image-visible == true -%}
+                <source srcset="{{feature-md.image}}?fm=avif&mask=ellipse&w=200&h=200&fit=facearea" type="image/avif">
+                <source srcset="{{feature-md.image}}?fm=webp&mask=ellipse&w=200&h=200&fit=facearea" type="image/webp">
+                <source srcset="{{feature-md.image}}?format=auto&mask=ellipse&w=200&h=200&fit=facearea" >
+                <img src="{{feature-md.image}}?fm=jpg&mask=ellipse&w=200&h=200&fit=facearea" alt="{{ feature-md.image-alt }}" decode="async" width="200" height="200" style="background-image:url('{{feature-md.editable-image}}?fit=fill&mask=ellipse&w=200&h=200&q=10&blur=70')" />
+                {%- else -%}
+                <source srcset="https://illinois-state-assets.imgix.net/casit/cdn/no-image-eng-square.jpg?fm=avif&mask=ellipse&w=200&h=200&fit=facearea" type="image/avif">
+                <source srcset="https://illinois-state-assets.imgix.net/casit/cdn/no-image-eng-square.jpg?fm=webp&mask=ellipse&w=200&h=200&fit=facearea" type="image/webp">
+                <source srcset="https://illinois-state-assets.imgix.net/casit/cdn/no-image-eng-square.jpg?format=auto&mask=ellipse&w=200&h=200&fit=facearea" >
+                <img src="https://illinois-state-assets.imgix.net/casit/cdn/no-image-eng-square.jpg?fm=jpg&mask=ellipse&w=200&h=200&fit=facearea" alt="{{feature-md.name}} does not have a profile picture." decode="async" width="200" height="200" style="background-image:url('https://illinois-state-assets.imgix.net/casit/cdn/no-image-eng-square.jpg?fit=fill&mask=ellipse&w=200&h=200&q=10&blur=70')" />
+                {%- endif %}
+            </picture>
+            <div class="bioCards__info">
+                <h2 class="bioCards__name" itemprop="name">{{feature-md.name}}</h2>
+               {%- if feature-md.job-title != nil -%}<p class="bioCards__title"><span class="pipe-space">| </span>{{feature-md.job-title}}</p>{%- endif %}
+               {%- if feature-md.item != nil -%}<p>{{feature-md.item}}</p>{%- endif %}
+                <p>{{ feature-md.content }}</p>
+            </div>
+        </div>
+        {%- endfor -%}
+    </section>
+</div>
+
+
+
+
+
+
+

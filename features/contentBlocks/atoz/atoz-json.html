@@ -1,0 +1,45 @@
+
+
+{% assign instanceName = page.features.atoz-json %}
+{% assign atoz-json-files = site.data.atoz.all-items | sort: 'title' | where:'atoz-json', instanceName %}
+  <section class="alphabet-list__wrapper max-width__tier-1">
+    <div class="alphabet-list__boxing">
+      <label for="alphabet-list">Select a letter:</label>
+      <select class="alphabet-list__select" onchange="displaySelectedValue()" id="alphabet-list">
+        <option class="alphabet-list__option" value="NA" >N/A</option>
+        {%- for atoz-json-file in atoz-json-files -%}
+          <option class="alphabet-list__option" value="{{atoz-json-file.title | downcase | slugify }}" >{{atoz-json-file.title | upcase}}</option>
+        {%- endfor -%}
+      </select>
+      <div id="atoz-results" class="alphabet-list-content__wrapper">
+      
+      {%- for atoz-json-file in atoz-json-files -%}
+          <div id="atoz-result_{{ atoz-json-file.title | downcase | slugify }}" class="unselected">
+            <h2>{{atoz-json-file.title | upcase }}</h2>
+            <p>{{atoz-json-file.content}}</p>
+          </div>
+      {%- endfor -%}
+      </div>
+      </div>
+  </section>
+
+
+
+<script>
+  function displaySelectedValue() {
+    const expectedId = "atoz-result_" + document.getElementById("alphabet-list").value;
+    var resultsHTML = document.getElementById("atoz-results");
+    var resultsData = document.getElementById("atoz-results").childNodes;
+
+    for (let i = 0; i < resultsData.length; i++) {
+      if (resultsData[i].id == undefined) continue;
+      const resultId = resultsData[i].id;
+      let HTMLclass = "";
+      (resultId == expectedId)? HTMLclass = "selected" : HTMLclass = "unselected";
+      document.getElementById(resultId).setAttribute("class", HTMLclass);
+    }
+
+  }
+  displaySelectedValue();
+
+</script>

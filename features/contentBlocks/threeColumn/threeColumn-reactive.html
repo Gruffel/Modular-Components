@@ -1,0 +1,22 @@
+---
+feature-title: Three Column (reactive)
+last-modified: 02/02/2021
+last-modified-by: Mason Bates
+build-method: Feature-Name Matching
+dev-link: /three-column-reactive/
+live-example-link:
+isDeprecated: false
+builtType: Content Block
+---
+
+  {%- if page.features.threeColumn-reactive != nil -%}
+  {% assign instanceName = page.features.threeColumn-reactive %}
+    {% assign threeColumnFiles = site.documents | where:'threeColumn-reactive', instanceName %}
+
+    {%- for threeColumnMd in threeColumnFiles -%}
+      <div class="threeColumn-reactive__container max-width__tier-1">
+      {{ threeColumnMd.content }}
+      </div>
+    {%- endfor -%}
+  {%- endif %}
+

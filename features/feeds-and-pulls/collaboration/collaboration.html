@@ -1,0 +1,39 @@
+
+
+  <!-- INSERT HTML CONTENT -->
+{%comment%}
+This does not appear to be used or finished; Could be good to revisit post conversion
+{%endcomment%}
+  <script>
+    $(document).ready(function(){
+           console.log("Getting course info...");
+           $.ajax({
+               method: "GET",
+               url: "https://casit.illinoisstate.edu/collaboration/Teacher"
+           })
+           .done(function(html){
+               console.log(html);
+               $("#results").append(html);
+               $('#tabs-accord').easyResponsiveTabs({
+                 type: 'default', // Types: default, vertical, accordion
+                 width: '100%', // auto or any width like 600px
+                 fit: false, // 100% fit in a container
+                 closed: false, // closes all tabs upon load
+                 init_class: 'resp-tabs-init', // class that gets removed once script is done loading
+                 hash_override_close: true, // If set to close, a targeted tab in the hash (anchor) will override option and show tab
+                 slideSpeed: 400, // Animation speed in ms of the accordion slide effects
+                 keyboard: true, // Controls keyboard operation, required for accessibility
+                 history: true, // Use browser history to update the tabs state
+                 active_priority: 'hash', // Types: hash, markup - determines is the hash or markup should take priority when determining which tab to show on load
+                 activate: function() {}, // Callback function, gets called if tab is switched
+                 slideUpComplete: function() {}, // Callback function, gets called when accordion slide up is complete
+                 slideDownComplete: function() {}, // Callback function, gets called when accordion slides down is complete
+                 init: function() {}, // Callback function, gets called before script starts processing
+                 complete: function() {} // Callback function, gets called after script is done processing
+               });
+           });
+       })
+    </script>
+    <section class="max-width__tier-1"><div id="results"></div></section>
+
+

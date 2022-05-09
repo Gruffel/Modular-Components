@@ -1,0 +1,93 @@
+{% assign buildPageFeatureArray = page.features | where_exp: 'features', 'features.positioning < 0' | sort: 'positioning' %} 
+{%comment%} 
+The line above grabs data from the page that is building. 
+It collects the data of features that have a positioning number less than 0 in the 'features' front matter.
+It then orders it numerically (incase the frontmatter positioning numbers are out of order).
+All of this is building it into an array that we can access.
+{%endcomment%}
+{% assign featureNegativeNumberI = buildPageFeatureArray.size | times: -1 | minus: 1 %}{%comment%} It starts and resets the loop with this var at 0 {%endcomment%}
+{%- for buildPageFeatureData in buildPageFeatureArray -%} 
+    {% assign featureNegativeNumberI = featureNegativeNumberI | plus: 1 %} {%comment%} KEEP THIS LINE -- It starts/maintains the loop for each feature {%endcomment%}
+    {%- if buildPageFeatureData.positioning == featureNegativeNumberI -%}{%comment%} Here we match the build cycle of each feature with its feature positioning, creating the ridgid structe to build in.{%endcomment%}
+{% comment %}
+    noted on: 12-13-21
+    This line below may be overkill and left on accident -- removing this 'max-width__tier-1' requires testing -- 
+{%endcomment%}
+    <div class="max-width__tier-1 ">
+{%comment%} ****** Button Types ****** {%endcomment%}
+    {%comment%} Added {%endcomment%}
+    {%comment%} Yet to be added {%endcomment%}
+        {%- if buildPageFeatureData.bannerButtons != nil -%}{% include features/buttonTypes/banner-buttons/banner-buttons.html %}{%- endif %}
+        {%- if buildPageFeatureData.bannerImageButtons != nil -%}{% include features/buttonTypes/banner-image-buttons/banner-image-buttons.html %}{%- endif %}
+        {%- if buildPageFeatureData.imageButtons != nil -%}<div class="max-width__tier-1 ">{% include features/buttonTypes/imageButtons/imageButtons.html %}</div>{%- endif %}
+        {%- if buildPageFeatureData.quickLinks != nil -%}<div class="max-width__tier-1 ">{% include features/buttonTypes/quickLinks/quickLinks.html %}</div>{%- endif %}
+{%comment%} ****** Content Blocks ****** {%endcomment%}
+    {%comment%} Added {%endcomment%}
+        {%- if buildPageFeatureData.accordion != nil -%}{% include features/contentBlocks/accordion/accordion.html %}{%- endif %}
+        {%- if buildPageFeatureData.hero-image != nil -%}{% include features/contentBlocks/hero-image/hero-image.html %}{%- endif %} {%comment%} REPLACEING Billboard {%endcomment%}
+        {%- if buildPageFeatureData.image-text != nil -%}{% include features/contentBlocks/image-text/image-text.html %}{%- endif %}
+        {%- if buildPageFeatureData.text-image != nil -%}{% include features/contentBlocks/text-image/text-image.html %}{%- endif %}
+        {%comment%}  
+            This needs some serious styles applied 
+            {% if buildPageFeatureData.video-text != nil %}{% include features/contentBlocks/video-text/video-text.html %}{%- endif %}
+                .video-text_flex-container{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                }
+                .cas-embed-container iframe, .embed-container object, .embed-container embed{
+                    width:100%;
+                    height: clamp(100px,100vh,25vw);
+                }
+        {% endcomment %}
+        {%comment%}  
+            This needs some serious styles applied 
+            {% if buildPageFeatureData.text-video != nil %}{% include features/contentBlocks/text-video/text-video.html %}{%- endif %}
+                .video-text_flex-container{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                }
+                .cas-embed-container iframe, .embed-container object, .embed-container embed{
+                    width:100%;
+                    height: clamp(100px,100vh,25vw);
+                }
+        {% endcomment %}
+        {% comment  %}        
+            One3_card needs some styling improvements for mobile experience.
+            {% if buildPageFeatureData.one3_card != nil %}{% include features/contentBlocks/one-3_card/one-3_card.html %}{%- endif %}
+        {% endcomment %}
+        {%- if buildPageFeatureData.twoColumn-reactive != nil -%}{% include features/contentBlocks/twoColumn/twoColumn-reactive/twoColumn-reactive.html %}{%- endif %}
+        {%- if buildPageFeatureData.twoColumn-fixed != nil -%}{% include features/contentBlocks/twoColumn/twoColumn-fixed/twoColumn-fixed.html %}{%- endif %}
+        {%- if buildPageFeatureData.textblock != nil -%}{% include features/contentBlocks/textblock/textblock.html %}{%- endif %}
+        {% comment  %}        Quote could use some style changes.       {% endcomment %}
+        {%- if buildPageFeatureData.quote != nil -%}{% include features/contentBlocks/quote/quote.html %}{%- endif %}
+        {%- if buildPageFeatureData.contactCards != nil -%}<div class="max-width__tier-1 ">{% include features/contentBlocks/peopleCards/contactCards/contactCards.html %}</div>{%- endif %}
+        {%- if buildPageFeatureData.faceList != nil -%}<div class="max-width__tier-1 ">{% include features/contentBlocks/peopleCards/faceList/faceList.html %}</div>{%- endif %}
+        {%- if buildPageFeatureData.bioCards != nil -%}<div class="max-width__tier-1 ">{% include features/contentBlocks/peopleCards/bioCards/bioCards.html %}</div>{%- endif %}
+        {%- if buildPageFeatureData.emeritus != nil -%}<div class="max-width__tier-1 ">{% include features/contentBlocks/peopleCards/emeritus/emeritus.html %}</div>{%- endif %}
+        {%- if buildPageFeatureData.callToActionCards != nil -%}<div class="max-width__tier-1 ">{% include features/contentBlocks/peopleCards/callToActionCards/callToActionCards.html %}</div>{%- endif %}
+    {%comment%} Yet to be tested {%endcomment%}
+        {%- if buildPageFeatureData.event-showcase != nil -%}{% include features/contentBlocks/event-showcase/event-showcase.html %}{%- endif %}
+        {%- if buildPageFeatureData.slider != nil -%}{% include features/contentBlocks/slider/slider.html %}{%- endif %}
+    {%comment%} Yet to be added {%endcomment%}
+        {%- if buildPageFeatureData.carousel != nil -%}{% include features/contentBlocks/carousel/carousel.html %}{%- endif %}
+{%comment%} ****** Feeds and Pulls ****** {%endcomment%}
+    {%comment%} Added {%endcomment%}
+    {%- if buildPageFeatureData.programs != nil -%}<div class="max-width__tier-1 ">{% include features/feeds-and-pulls/programs/programs.html %}</div>{%- endif %}
+
+    {%comment%} Yet to be tested {%endcomment%}
+        {%- if buildPageFeatureData.twitterFeed != nil -%}<div class="max-width__tier-1 ">{% include features/feeds-and-pulls/twitter-feed/twitterfeed.html %}</div>{%- endif %}
+    {%comment%} Yet to be added {%endcomment%}
+{% comment %}
+    noted on: 12-13-21
+    Closing tag for possible issue.
+    This line below may be overkill and left on accident -- removing this 'max-width__tier-1' requires testing -- 
+{%endcomment%}
+        </div>
+    {%- endif %}
+{%- endfor -%}
+
+
+
+
+
+

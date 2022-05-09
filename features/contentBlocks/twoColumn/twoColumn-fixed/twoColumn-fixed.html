@@ -1,0 +1,13 @@
+{% assign instanceName = buildPageFeatureData.twoColumn-fixed %}
+{% assign siteFeatures = site.documents | where:'twoColumn-fixed', instanceName %}
+<div class="twoColumn-fixed__container max-width__tier-1">
+  {%- for feature-md in siteFeatures -%}
+    <div class="twoColumn-fixed">
+      {%if- feature-md.column == 'left' -%}
+      {{ feature-md.content }}
+      {%- elsif feature-md.column == 'right' -%}
+      {{ feature-md.content }}
+      {%- endif %}
+    </div>
+  {%- endfor -%}
+</div>

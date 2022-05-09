@@ -1,0 +1,77 @@
+{% assign instanceName = buildPageFeatureData.video-text %}
+{% assign siteFeatures = site.documents | where:'video-text', instanceName %}
+{%- for feature-md in siteFeatures -%}
+<div class="video-text__wrapper {%- if feature-md.background == 'white-chevron' -%} video-text__background--linear-gradient-white-chevron{%- elsif feature-md.background == 'white-dots' -%}video-text__background--linear-gradient-plain-dots{%- elsif feature-md.background == 'white-squares' -%}video-text__background--linear-gradient-square-tiles{%- endif %}">
+  <section class="max-width__tier-1 primary-textBlock__container">
+    <div class="video-text_flex-container">
+      <div class="video-flex-contents">
+        {%- if feature-md.video-visible == true -%}
+        <div class='cas-embed-container'><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" src='{{ feature-md.video }}'  allowfullscreen></iframe></div>
+        {%- endif %}
+      </div>
+      <div {%- if feature-md.text-align == "right" -%}class="flex-contents-text-right"{%- elsif feature-md.text-align == "left" -%}class="flex-contents-text-left"{%- elsif feature-md.text-align == "center" -%}"flex-contents-text-center"{%- else -%}class="flex-contents"{%- endif %}>
+        <h3><strong>{{feature-md.title}}</strong></h3>
+        {{ feature-md.content }}
+      </div>
+    </div>
+  </section>
+</div>
+{%- endfor -%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {%- if page.features.text-video != nil -%}
+  {% assign instanceName = page.features.text-video %}
+
+    {% assign text-videoFiles = site.documents | where:'text-video', instanceName %}
+
+      {%- for text-videoMd in text-videoFiles -%}
+      <div class="text-video__wrapper {%- if text-videoMd.background == 'white-chevron' -%} text-video__background--linear-gradient-white-chevron{%- elsif text-videoMd.background == 'white-dots' -%}text-video__background--linear-gradient-plain-dots{%- elsif text-videoMd.background == 'white-squares' -%}text-video__background--linear-gradient-square-tiles{%- endif %}">
+        <section class="max-width__tier-1 primary-textBlock__container">
+          <div class="text-video_flex-container">
+
+            <div {%- if text-videoMd.text-align == "right" -%}class="flex-contents-text-right"{%- elsif text-videoMd.text-align == "left" -%}class="flex-contents-text-left"{%- elsif text-videoMd.text-align == "center" -%}"flex-contents-text-center"{% else %}class="flex-contents"{%- endif %}>
+              <h3><strong>{{text-videoMd.title}}</strong></h3>
+              {{ text-videoMd.content }}
+            </div>
+
+            <div class="video-flex-contents">
+              {%- if text-videoMd.video-visible == true -%}
+              <div class='cas-embed-container'><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" src='{{ text-videoMd.video }}'  allowfullscreen></iframe></div>
+              {%- endif %}
+            </div>
+          </section>
+        </div>
+
+      {%- endfor -%}
+
+
+  {%- endif %}
+
+
+
+
+
+
+
+
+

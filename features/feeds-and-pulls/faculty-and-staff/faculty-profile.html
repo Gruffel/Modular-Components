@@ -1,0 +1,44 @@
+{%comment%}
+
+Example of page front matter:
+
+layout: default-nested/page
+permalink: /faculty/instructional-faculty/profile/
+title: Faculty Profile
+noH1Title: 1
+
+features:
+  - positioning: 1
+    facultyProfile: faculty
+
+
+{%endcomment%}
+
+<div id="results" class="max-width__tier-1"></div>
+
+
+<script>
+$(document).ready(function(){
+   $.ajax({
+       method: "GET",
+       url: "https://casit.illinoisstate.edu/coins/faculty/profile/" + getUrlVars()["ulid"] + "/html"
+   })
+   .done(function(html){
+       //console.log(html);
+       $("#results").append(html);
+       $('#fs-tabs-accord').easyResponsiveTabs({
+          type: 'default', //Types: default, vertical, accordion
+          width: 'auto', //auto or any width like 600px
+          fit: false,  // 100% fit in a container
+          closed: 'accordion'
+       });
+   });
+   function getUrlVars() {
+       var vars = {};
+       var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&#]*)/gi, function(m,key,value) {
+           vars[key] = value;
+       });
+       return vars;
+   }
+})
+</script>

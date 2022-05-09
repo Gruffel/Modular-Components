@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+{%- if page.noH1Title == 1 -%}<!--Removes title to h1 generator-->{%- elsif page.h1HeroImage == true -%}<!-- Future 'Template Feature/Option' for a hero image trigger for each page -->{%- else -%}
+<h1>{{page.title}}</h1><!-- Generates h1 custom title based on meta data on markdown each file -->{%- endif %}
+
+{%- if page.features != nil -%}<div id="f-negative-wrapper">{% include structure/features/f-positioning-negative.html %}</div>{%- endif %}
+
+<div class="max-width__tier-1 primary-textBlock__container">
+    {%- if page.snippets != nil -%}<div id="s-negative-wrapper">{% include structure/snippets/s-positioning-negative.html %}</div>{%- endif %} 
+        {{ content }}
+    {%- if page.snippets != nil -%}<div id="s-positive-wrapper">{% include structure/snippets/s-positioning-positive.html %}</div>{%- endif %}
+</div>
+
+{%- if page.features != nil -%}<div id="f-positive-wrapper">{% include structure/features/f-positioning-positive.html %}</div>{%- endif %}

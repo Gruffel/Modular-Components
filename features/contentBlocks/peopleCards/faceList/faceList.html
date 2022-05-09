@@ -1,0 +1,68 @@
+{% assign instanceName = buildPageFeatureData.faceList %}
+{% assign siteFeatures = site.data.faceList.faceLists | sort:'lastname' | where_exp:"item", "item.display contains instanceName" %}
+
+
+<section class="max-width__tier-1 faceList__wrapper">
+  {% for feature-md in siteFeatures %}
+    <div itemscope itemtype="http://schema.org/Person">
+      <div class="faceList">
+        <div class="faceList__image-wrapper">
+          {% if feature-md.image-visible == true %}
+          <picture>
+            <source srcset="{{feature-md.image}}?w=300&h=300&format=auto&mask=ellipse&fit=facearea" media="(min-width:1024px)">
+            <source srcset="{{feature-md.image}}?w=200&h=200&format=auto&mask=ellipse&fit=facearea" media="(min-width:768px)">
+            <source srcset="{{feature-md.image}}?w=150&h=150&format=auto&mask=ellipse&fit=facearea" media="(min-width:425px)">
+            <source srcset="{{feature-md.image}}?w=200&h=200&format=auto&mask=ellipse&fit=facearea" media="(max-width:479.9px)">
+            <img src="{{feature-md.image}}?w=200&h=200&format=auto&mask=ellipse&fit=facearea" itemprop="image" class="faceList__image" width="200" height="200" alt="Portrait of {{feature-md.name}}" loading="lazy" />
+          </picture>
+          {% else %}
+          <picture>
+            <source srcset="https://illinois-state-assets.imgix.net/casit/cdn/campus-aerial-red-light-no-image.jpg?w=300&h=300&format=auto&mask=ellipse" media="(min-width:1024px)">
+            <source srcset="https://illinois-state-assets.imgix.net/casit/cdn/campus-aerial-red-light-no-image.jpg?w=200&h=200&format=auto&mask=ellipse" media="(min-width:768px)">
+            <source srcset="https://illinois-state-assets.imgix.net/casit/cdn/campus-aerial-red-light-no-image.jpg?w=150&h=150&format=auto&mask=ellipse" media="(min-width:425px)">
+            <source srcset="https://illinois-state-assets.imgix.net/casit/cdn/campus-aerial-red-light-no-image.jpg?w=200&h=200&format=auto&mask=ellipse" media="(max-width:479.9px)">
+            <img src="https://illinois-state-assets.imgix.net/casit/cdn/campus-aerial-red-light-no-image.jpg?w=200&h=200&format=auto&mask=ellipse" itemprop="image" class="faceList__image" width="200" height="200" alt="Portrait of {{feature-md.name}}" loading="lazy" />
+          </picture>
+          {% endif %}
+        </div>
+        <div class="faceList__content">
+          <div class="faceList__name">
+            <h3 itemprop="name">{{feature-md.firstname}} {{feature-md.middlename}} {{feature-md.lastname}}</h3>
+          </div>
+          <div class="faceList__list">
+            {% if feature-md.listType == "unordered" %}
+              <ul>
+                {% for listItem in feature-md.list %}
+                  {% if listItem.list-item-display == true %}
+                    <li><span class="faceList_title_content">{{listItem.content}}</span><span class="faceList_title">{{listItem.title}}</span></li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% elsif feature-md.listType == "ordered" %}
+              <ol>
+                {% for listItem in feature-md.list %}
+                  {% if listItem.list-item-display == true %}
+                    <li><span class="faceList_title_content">{{listItem.content}}</span><span class="faceList_title">{{listItem.title}}</span></li>
+                  {% endif %}
+                {% endfor %}
+              </ol>
+            {% elsif feature-md.listType == "null" %}
+              {% for listItem in feature-md.list %}
+                {% if listItem.list-item-display == true %}
+                  <li><span class="faceList_title_content">{{listItem.content}}</span><span class="faceList_title">{{listItem.title}}</span></li>
+                {% endif %}
+              {% endfor %}
+            {% else %}<p>System Error - List Type Error - Contact CAS-IT</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+
+
+
+
+

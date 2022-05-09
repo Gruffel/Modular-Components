@@ -1,0 +1,9 @@
+{% assign instanceName = buildPageFeatureData.text-block %}
+{% assign siteFeatures = site.documents | where:'text-block', instanceName %}
+
+<div class="max-width__tier-1 primary-textBlock__container">
+  {%- for feature-md in siteFeatures -%}
+    {{ feature-md }}
+  {%- endfor -%}
+</div>
+

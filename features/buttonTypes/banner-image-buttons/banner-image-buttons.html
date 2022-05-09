@@ -1,0 +1,30 @@
+<!-- {% increment itemNumber %} -->
+
+{%- if buildPageFeatureData.bannerImageButtons != nil -%}
+  {% assign instanceName = buildPageFeatureData.bannerImageButtons %}
+    {% assign siteFeatures = site.documents | where:'bannerImageButtons', instanceName %}
+
+    <div class="button-banner__wrapper button-image__chevron" >
+    {% assign currentTitle = "" %}
+
+    {%- for feature-md in siteFeatures -%}
+    
+        {%- if feature-md.button-set-title != currentTitle -%}
+        {%- if feature-md != siteFeatures.first -%}</div>{%- endif %}
+        <h2 class="button-banner__section-title">{{feature-md.button-set-title}}</h2>
+          <div class="button-banner__button-wrapper max-width__tier-1">
+        {%- endif %}
+        <div class="button-banner__card">
+        {%- if feature-md.bannerImage != '' -%}
+        <img src="{{feature-md.image}}?fit=crop&w=450&h=225" alt="{{feature-md.image-alt}}" width="450" height="225" loading="lazy"/>
+        {%- else -%}
+        <img src="https://illinois-state-assets.imgix.net/casit/cdn/features/banner-image-buttons/image-{% increment itemNumber %}?w=450&h=225" alt="" width="450" height="225" loading="lazy"/>
+        {%- endif %}
+            <a href="{{ feature-md.link }}" class="btn btn__red-white btn__medium btn__rounded" target="_blank" rel="noopener">{{ feature-md.button-text }}</a>
+
+          </div>
+        {% assign currentTitle = feature-md.button-set-title %}
+        {%- if feature-md == siteFeatures.last -%}
+          </div>
+        {%- endif %}
+    {%- endfor -%}

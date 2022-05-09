@@ -1,0 +1,156 @@
+{
+  "bread":{
+    "type": "textDisplay",
+    "textToDisplay": [
+      "the Innkeep brings out a fresh loaf of bread and a bit of olive oil for dip. You have a delicious, if modest meal.",
+      "the Innkeep brings out an older piece of bread, seems they haven't been getting customers recently. its a bit stretchy and almost stale, not the best meal you've had",
+      "the Innkeep brings out some bread, you eat it quickly and get up, ready to continue your adventuring."
+    ],
+    "cost": 2
+  },
+  "ale":{
+    "type": "textDisplay",
+    "textToDisplay": [
+      "You take some coin and some time to wash down the hardships of adventuring with a mug of ale.",
+    ],
+    "cost": 1
+  },
+  "dagger":{
+    "type": "weapon",
+    "textToDisplay":[
+      "A new shiny dagger, perfect for stabbing from the shadows"
+    ],
+    "dmgBonus": [0,10],
+    "cost": 250,
+    "bonusAccuracy": 20
+  },
+  "longsword":{
+    "type": "weapon",
+    "textToDisplay":[
+      "A fine sword, longtime favorite of the kingdoms duelists and martialists. Simple, elegant, and deadly."
+    ],
+    "dmgBonus": [5,12],
+    "cost": 500,
+    "bonusAccuracy": 10
+  },
+  "greatsword":{
+    "type": "weapon",
+    "textToDisplay":[
+      "A weapon of strength, gripping it in your palms you feel the weight of the lives of a thousand warriors before you, and what will become a thousand warriors after you..."
+    ],
+    "dmgBonus": [7,15],
+    "cost": 800,
+    "bonusAccuracy": 0
+  },
+  "bow":{
+    "type": "equipment",
+    "textToDisplay":[
+      "A hunting bow, perhaps simple or mundane, but a necessity for any adventurer"
+    ],
+    "cost": 300
+  },
+  "staff":{
+    "type": "equipment",
+    "textToDisplay":[
+      "The weapon of Wizards & Druids, upon picking it up, you can feel the air around you spark with a sharp Arcane energy. This needs essence to function as a weapon of magic, the apothercary is supposed to have some..."
+    ],
+    "dmgBonus": [5,12],
+    "cost": 450
+  },
+  "arrows":{
+    "type": "consumable",
+    "textToDisplay":[
+      "a pack of some arrows, worth its weight in gold for any archer."
+    ],
+    "dmgBonus": [5,15],
+    "quantity": 5,
+    "requiredEquipment": "bow",
+    "cost": 5
+  },
+  "essence of winter":{
+    "type": "consumable",
+    "textToDisplay":[
+      "A small container, filled with small pale motes of that form into and out of small shards of ice as you pick up the vial, better be careful not to break this."
+    ],
+    "dmgBonus": [10,25],
+    "quantity": 2,
+    "healing": false,
+    "requiredEquipment": "staff",
+    "cost": 25
+  },
+  "essence of summer":{
+    "type": "consumable",
+    "textToDisplay":[
+      "A small container, filled with small bright motes of that begin to blindingly glow as you pick up the vial, the light softening as you loosen your grip, better be careful not to break this."
+    ],
+    "dmgBonus": [5,35],
+    "quantity": 2,
+    "healing": false,
+    "requiredEquipment": "staff",
+    "cost": 25
+  },
+  "essence of spring":{
+    "type": "consumable",
+    "textToDisplay":[
+      "A small container, filled with small dusty motes of that form into and out of cracked roots and wood as you pick up the vial, better be careful not to break this."
+    ],
+    "dmgBonus": [40,75],
+    "healing": true,
+    "quantity": 2,
+    "requiredEquipment": "staff",
+    "cost": 25
+  },
+  "essence of fall":{
+    "type": "consumable",
+    "textToDisplay":[
+      "A small container, filled with small dusty motes of that violently swirl within their container to the point of shaking it as you pick up the vial, better be careful not to break this."
+    ],
+    "dmgBonus": [17,18],
+    "quantity": 2,
+    "healing": false,
+    "requiredEquipment": "staff",
+    "cost": 25
+  },
+  "potion of healing":{
+    "type": "consumable",
+    "textToDisplay":[
+      "the unmistakable soft blue vial of healing liquid is warm to the touch as you add it to your pack, this will be a huge help, potentially a life saver..."
+    ],
+    "dmgBonus": [50,100],
+    "quantity": 1,
+    "requiredEquipment": "none",
+    "cost": 45
+  },
+  "padded cloth armor":{
+    "type": "armor",
+    "textToDisplay":[
+      "Really, it isn't much more than just a couple layers of extra pants and shirts. But you'd be surprised how much it protects you"
+    ],
+    "protectionRate": 2,
+    "cost": 1250
+  },
+  "chainmail shirt":{
+    "type": "armor",
+    "textToDisplay":[
+      "simply metal divets made into a shirt worn over your clothes, nothing fancy, but very effective"
+    ],
+    "protectionRate": 3,
+    "cost": 2000
+  },
+  "partial platemail":{
+    "type": "armor",
+    "textToDisplay":[
+      "enough steel to cover your vital organs. This makes even the battlefield feel like it is barely a threat."
+    ],
+    "protectionRate": 3,
+    "cost": 5000
+  },
+  "full platemail":{
+    "type": "armor",
+    "textToDisplay":[
+      "Befitting of nothing less than the greatest knights the world has ever seen, in this you are just as much a tank as a soldier."
+    ],
+    "protectionRate": 5,
+    "cost": 10000
+  }
+}

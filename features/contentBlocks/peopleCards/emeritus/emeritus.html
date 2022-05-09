@@ -1,0 +1,61 @@
+---
+feature-title: Emeritus
+last-modified: 02/02/2021
+last-modified-by: Mason Bates
+build-method: Feature-Name Matching (json)
+dev-link: /emeritus/
+isDeprecated: false
+builtType: Content Block
+live-example-link:
+---
+
+
+{% if page.features.emeritus != nill %}
+  {% assign instanceName = page.features.emeritus %}
+  {% assign emeritusCards = site.data.emeritus.cards | sort:'editor-order' | where:'page', instanceName %}
+
+<div class="max-width__tier-1">
+<div class="profile_list" itemscope itemtype="https://schema.org/EducationalOrganization">
+{% for emeritus in emeritusCards %}
+  {% if emeritus.display == true %}
+
+    <div>
+        <div class="record">
+<!-- <a href=""> -->
+            <div class="portrait">
+              {% if emeritus.image-visible == true %}
+                <img src="{{ emeritus.image }}" alt="{{ emeritus.name }} portrait"/>
+                {% else %}
+                <img src="http://casit.illinoisstate.edu/cdn/img/no-image.jpg" alt="ISU Seal as placeholder for {{ emeritus.name }} portrait"/>
+              {% endif %}
+          </div>
+
+    <!-- </a> -->
+            <div class="info">
+                <div class="name">
+                    <div class="facstaff-infocard"><!-- <a href="" class="facstaff-infocard"> -->
+                        <span itemprop="name">{{ emeritus.name }}</span>
+                    </div><!-- </a> -->
+                </div>
+                {% if emeritus.title-visible == true %}
+                <p class="title">
+                  {{ emeritus.title }}
+                </p>
+                {% endif %}
+                {% if emeritus.phone-visible == true %}
+                <p class="phone">
+                    <a href="tel:{{ emeritus.phone }}" itemprop="telephone" class="facstaff-phone">{{ emeritus.phone }}</a>
+                </p>{% endif %}
+                {% if emeritus.email-visible == true %}
+                <p class="email">
+                    <a href="mailto:{{ emeritus.email }}" itemprop="email" class="facstaff-email">{{ emeritus.email }}</a>
+                </p>{% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+{% endfor %}
+</div>
+</div>
+{% endif %}

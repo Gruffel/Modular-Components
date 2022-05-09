@@ -1,0 +1,21 @@
+
+{% assign instanceName = buildPageFeatureData.pageTabs %}
+{% assign siteFeatures = site.documents | where:'pageTabs', instanceName %}
+
+<script src="//cdn.illinoisstate.edu/js/plugins/easy-responsive-tabs/1.4/easy-responsive-tabs.min.js"></script>
+<script src="/assets/script/pageTabs.js"></script>
+<div class="resp-tabs max-width__tier-1" id="tabs-accord">
+    <ul class="resp-tabs-list tabs-menu">
+        {%- for feature-md in siteFeatures -%}
+        <li id="tab_item-{% increment tabIndex %}">{{ feature-md.title }}</li>
+        {%- endfor -%}
+    </ul>
+
+    {%- for feature-md in siteFeatures -%}
+    <div class="resp-tabs-container resp-tabs-init" aria-labelledby="tab_item-{% increment secondTabIndex %}">
+        <div>
+            {{ feature-md.content }}
+        </div>
+    </div>
+    {%- endfor -%}
+</div>

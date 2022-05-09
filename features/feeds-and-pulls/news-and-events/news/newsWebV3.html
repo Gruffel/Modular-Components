@@ -1,0 +1,51 @@
+{% assign instanceName = buildPageFeatureData.newsWebV3 %}
+{%- if instanceName == "siteWide" -%}
+<script>
+	$(document).ready(function(){
+		console.log("Getting faculty info...");
+		$.ajax({
+			method: "GET",
+			url: "https://casit.illinoisstate.edu/coins/news/{{site.department-number}}/news"
+		})
+		.done(function(html){
+			console.log("done");
+			$("#news_results").append(html);
+		});
+	})
+	window.addEventListener("load", function(event) {
+		var internalGet = document.getElementsByClassName('news-thumb');
+
+		for (var i = 0; i < internalGet.length; i++) {
+			var newsLink = internalGet[i].src;
+		 	var newNewsLink = newsLink.replace("75x75","220x145");
+		  internalGet[i].src = newNewsLink;
+		}
+	});
+</script>
+<div id='news_results'></div>
+{%- else -%}
+{% assign siteFeatures = site.documents | where:'newsWebV3', instanceName %}
+<script>
+	$(document).ready(function(){
+		console.log("Getting faculty info...");
+		$.ajax({
+			method: "GET",
+			url: "https://casit.illinoisstate.edu/coins/news/{{instanceName}}/news"
+		})
+		.done(function(html){
+			console.log("done");
+			$("#news_results").append(html);
+		});
+	})
+	window.addEventListener("load", function(event) {
+		var internalGet = document.getElementsByClassName('news-thumb');
+
+		for (var i = 0; i < internalGet.length; i++) {
+			var newsLink = internalGet[i].src;
+		 	var newNewsLink = newsLink.replace("75x75","220x145");
+		  internalGet[i].src = newNewsLink;
+		}
+	});
+</script>
+<div id='news_results'></div>
+{%- endif %}

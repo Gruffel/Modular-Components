@@ -1,0 +1,102 @@
+{% assign instanceName = buildPageFeatureData.facultyStaff %}
+
+{%- if instanceName == "siteWide" -%}
+{%comment%}
+
+This section/instance is triggered when the page that is building the collection has a front matter var like this:
+    facultyStaff: siteWide
+  This uses the websites department number to reference what department to pull from.
+
+There are three options for the front matter field bellow
+    facultyToDisplay: 
+  These are the three options
+    - all
+    - staff
+    - facultyinstructionalstaff
+
+Lizzy please fill out the documentation here for the VIP options:
+Most VipClass
+Vip Class
+
+
+Example of page front matter: (Lizzy please update this as well.)
+
+layout: default-nested/page
+permalink: /faculty/instructional-faculty/
+directorEmail: ?
+VIP: ?
+MOST VIP: ?
+features:
+  - positioning: 1
+    facultyStaff: siteWide
+
+# Fac/Staff Feed
+facultyToDisplay: facultyinstructionalstaff
+
+{%endcomment%}
+<div class="fac-and-staff max-width__tier-1">
+    <div id="results"></div>
+  <script>
+
+  $(document).ready(function(){
+
+         $.ajax({
+             method: "GET",
+             url: "https://casit.illinoisstate.edu/coins/faculty/list/{{site.department-number}}/{{page.facultyToDisplay}}/html"
+
+         })
+         .done(function(html){
+             $("#results").append(html);
+
+             {% assign orderedDisplays = page.topDisplays | reverse %}
+             {% for display in orderedDisplays %}
+               var j{% increment topDisplayIndex %} = $("a[href~='mailto:{{display}}@IllinoisState.edu']").parent().parent().parent();
+               {% if display == orderedDisplays.last %}j{{ topDisplayIndexTriplicate }}[0].classList.add("mostVipClass");{% endif %}
+               j{% increment topDisplayIndexTriplicate %}[0].classList.add("vipClass"); 
+               $(".fs-wrap-list").prepend(j{% increment topDisplayIndexDuplicate %});
+             {% endfor %}
+         });
+     })
+  </script>
+</div>
+
+{%- else -%}
+{% assign siteFeatures = site.documents | where:'facultyStaff', instanceName %}
+
+{%comment%}
+
+This section/instance is triggered when the page that is building the collection has a front matter var like this:
+    facultyStaff: 448
+  This uses 3 digit number that references the department number as the means to determine what department to pull from. 
+
+The rest of the information in the comment above applies to this instance as well.
+
+{%endcomment%}
+
+<div class="fac-and-staff max-width__tier-1">
+  <div id="results"></div>
+<script>
+
+$(document).ready(function(){
+
+       $.ajax({
+           method: "GET",
+           url: "https://casit.illinoisstate.edu/coins/faculty/list/{{page.facultyStaff}}/{{page.facultyToDisplay}}/html"
+
+       })
+       .done(function(html){
+           $("#results").append(html);
+
+           {% assign orderedDisplays = page.topDisplays | reverse %}
+           {% for display in orderedDisplays %}
+             var j{% increment topDisplayIndex %} = $("a[href~='mailto:{{display}}@IllinoisState.edu']").parent().parent().parent();
+             {% if display == orderedDisplays.last %}j{{ topDisplayIndexTriplicate }}[0].classList.add("mostVipClass");{% endif %}
+             j{% increment topDisplayIndexTriplicate %}[0].classList.add("vipClass"); 
+             $(".fs-wrap-list").prepend(j{% increment topDisplayIndexDuplicate %});
+           {% endfor %}
+       });
+   })
+</script>
+</div>
+
+{%- endif %}
