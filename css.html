@@ -1,0 +1,471 @@
+{%comment%}
+##############################
+Base line CSS sheets
+##############################
+{%endcomment%}
+    <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/main.min.css" />
+    <link href="https://iguides.illinoisstate.edu/iguide/iguide-black.css" rel="stylesheet"  type="text/css">
+    <link rel="preload" href="https://iguides.illinoisstate.edu/css/style.css" as="style"  type="text/css">
+
+{%comment%}
+##############################
+    Template influced CSS sheets
+##############################
+{%endcomment%}
+    {%- if page.url != "/" -%}{%comment%}All pages but homepage styles{%endcomment%}{%- endif -%}
+    {%- if page.url == "/" -%}{%comment%}Homepage exclusive styles{%endcomment%}{%- endif -%}
+
+{%comment%}
+##############################
+    Feature Tiggered CSS sheets
+##############################
+{%endcomment%}
+{% assign buildPageFeatureArray = page.features %} 
+{%comment%} Here we are searching the building page what features are going to be built so we can bring in the appropraite styles. {%endcomment%}
+{%- for buildPageFeatureData in buildPageFeatureArray -%}
+{% comment %}
+########## 
+    BUTTON TYPES 
+##########
+{% endcomment %}
+    {%- if buildPageFeatureData.quickLinks != nil and quickLinksSwitchCSS != true -%}{% assign quickLinksSwitchCSS = true %}
+    {% comment %} <!-- quickLinks Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/quickLink.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.bannerButtons != nil and bannerButtonsSwitchCSS != true -%}{% assign bannerButtonsSwitchCSS = true %}
+    {% comment %} <!-- bannerButtons Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/buttons.min.css" />
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/bannerButtons.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.bannerImageButtons != nil and bannerImageButtonsSwitchCSS != true -%}{% assign bannerImageButtonsSwitchCSS = true %}
+    {% comment %} <!-- bannerImageButtons Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/buttons.min.css" />
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/bannerImageButtons.min.css" />
+    {%- endif %}
+
+    {%- if buildPageFeatureData.imageButtons != nil and imageButtonsSwitchCSS != true -%}{% assign imageButtonsSwitchCSS = true %}
+        <!-- <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/imageButtons.min.css" /> -->
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/buttons.min.css" />
+    {%- endif %}
+
+
+{% comment %}
+########## 
+    CONTENT BLOCKS 
+##########
+{% endcomment %}
+    {%- if buildPageFeatureData.accordion != nil and accordionSwitchCSS != true -%}{% assign accordionSwitchCSS = true %}
+        {% comment %} <!-- accordion Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/accordion.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.text-image != nil and text-imageSwitchCSS != true -%}{% assign text-imageSwitchCSS = true %}
+        {% comment %} <!-- text-image Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/text-image.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.image-text != nil and image-textSwitchCSS != true -%}{% assign image-textSwitchCSS = true %}
+        {% comment %} <!-- image-text Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/image-text.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.video-text != nil and video-textSwitchCSS != true -%}{% assign video-textSwitchCSS = true %}
+        {% comment %}<!-- image-text Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/video-text.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.text-video != nil and text-videoSwitchCSS != true -%}{% assign text-videoSwitchCSS = true %}
+        {% comment %}<!-- text-video Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/text-video.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.one3_Card != nil and one-3_CardSwitchCSS != true -%}{% assign one-3_CardSwitchCSS = true %}
+        {% comment %} <!-- one3_card Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/one-3_Card.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.twoColumn-fixed != nil and twoColumn-fixedSwitchCSS != true -%}{% assign twoColumn-fixedSwitchCSS = true %}
+        {% comment %} <!-- twoColumn-fixed Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/twoColumn-fixed.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.twoColumn-reactive != nil and twoColumn-reactiveSwitchCSS != true -%}{% assign twoColumn-reactiveSwitchCSS = true %}
+        {% comment %} <!-- twoColumn-reactive Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/twoColumn-reactive.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.slider != nil and sliderSwitchCSS != true -%}{% assign sliderSwitchCSS = true %}
+        {% comment %} <!-- slider Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/slider/slick-theme.min.css" />
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/slider/slick.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.hero-image != nil and hero-imageSwitchCSS != true -%}{% assign hero-imageSwitchCSS = true %}
+        {% comment %} <!-- hero-image Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/hero-image.min.css" />
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/buttons.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.quote != nil and quoteSwitchCSS != true -%}{% assign quoteSwitchCSS = true %}
+    {% comment %} <!-- quote Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/quote.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.pageTabs != nil and pageTabsSwitchCSS != true -%}{% assign pageTabsSwitchCSS = true %}
+        {% comment %} <!-- pageTabs Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/feeds-and-pulls/major-minor-feeds.min.css" />
+        <link href="//cdn.illinoisstate.edu/css/common/easy-responsive-tabs/1.4/easy-responsive-tabs.css" rel="stylesheet" media="screen" type="text/css">
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/pageTabs.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.makeAGift != nil and makeAGiftSwitchCSS != true -%}{% assign makeAGiftSwitchCSS = true %}
+        {% comment %} <!-- makeAGift Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/makeAGift.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.contactCards != nil and contactCardsSwitchCSS != true -%}{% assign contactCardsSwitchCSS = true %}
+        {% comment %} <!-- contactCards Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/contactCards.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.faceList != nil and faceListSwitchCSS != true -%}{% assign faceListSwitchCSS = true %}
+        {% comment %} <!-- faceList Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/faceList.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.bioCards != nil and bioCardsSwitchCSS != true -%}{% assign bioCardsSwitchCSS = true %}
+        {% comment %} <!-- bioCards Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/bioCards.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.emeritus != nil and emeritusSwitchCSS != true -%}{% assign emeritusSwitchCSS = true %}
+        {% comment %} <!-- emeritus Styles -->{% endcomment %}
+        <link rel="stylesheet" href="{{site.baseurl}}/assets/css/features/contentBlocks/emeritus.min.css"/>
+    {%- endif %}
+    {%- if buildPageFeatureData.callToActionCards != nil and callToActionCardsSwitchCSS != true -%}{% assign callToActionCardsSwitchCSS = true %}
+        {% comment %} <!-- callToActionCards Styles -->{% endcomment %}
+        <link rel="stylesheet" href="{{site.baseurl}}/assets/css/features/contentBlocks/callToAction.min.css"/>
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/buttons.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.atoz-markdown != nil and atoz-markdownSwitchCSS != true -%}{% assign atoz-markdownSwitchCSS = true %}
+    <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/atoz.min.css" />
+    {%- endif %}
+    {%- if buildPageFeatureData.atoz-json != nil and atoz-jsonSwitchCSS != true -%}{% assign atoz-jsonSwitchCSS = true %}
+    <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/atoz.min.css" />
+    {%- endif %}
+
+{% comment %}
+##########
+FEEDS & PULLS
+##########
+{% endcomment %}
+{%- if buildPageFeatureData.facultyStaff != nil and facultyStaffSwitchCSS != true -%}{% assign facultyStaffSwitchCSS = true %}
+    {% comment %} <!-- facultyStaff Styles -->{% endcomment %}
+<link rel="preload" href="https://casit.illinoisstate.edu/cdn/css/faculty-staff-jekyll-2.0.min.css" as="style">
+<link rel="preload" href="https://cdn.illinoisstate.edu/css/common/easy-responsive-tabs/1.4/easy-responsive-tabs.css" as="style">
+    <link href="https://casit.illinoisstate.edu/cdn/css/faculty-staff-jekyll-2.0.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.illinoisstate.edu/css/common/easy-responsive-tabs/1.4/easy-responsive-tabs.css" rel="stylesheet"/>
+{%- endif %}
+
+{%- if buildPageFeatureData.facultyProfile != nil and facultyProfileSwitchCSS != true -%}{% assign facultyProfileSwitchCSS = true %}
+    {% comment %} <!-- facultyProfile Styles -->{% endcomment %}
+<link rel="preload" href="https://casit.illinoisstate.edu/cdn/css/faculty-staff-jekyll-2.0.min.css" as="style">
+<link rel="preload" href="https://cdn.illinoisstate.edu/css/common/easy-responsive-tabs/1.4/easy-responsive-tabs.css" as="style">
+<link href="https://casit.illinoisstate.edu/cdn/css/faculty-staff-jekyll-2.0.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.illinoisstate.edu/css/common/easy-responsive-tabs/1.4/easy-responsive-tabs.css" rel="stylesheet"/>
+{%- endif %}
+
+
+{%- if buildPageFeatureData.research != nil and researchSwitchCSS != true -%}{% assign researchSwitchCSS = true %}
+    {% comment %} <!-- Preload Research Article Styles -->{% endcomment %}
+<link rel="preload" href="https://cdn.illinoisstate.edu/css/common/easy-responsive-tabs/1.4/easy-responsive-tabs.css" as="style">
+<link rel="preload" href="/assets/css/features/buttonTypes/buttons.min.css" as="style">
+<link rel="preload" href="/assets/css/features/feeds-and-pulls/article.min.css" as="style">
+<link rel="preload" href="https://casit.illinoisstate.edu/cdn/css/faculty-staff-jekyll-2.0.min.css" as="style">
+    {% comment %} <!-- Research Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="/assets/css/features/feeds-and-pulls/research.min.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/features/buttonTypes/buttons.min.css" />
+{%- endif %}
+
+{%- if buildPageFeatureData.researchArticle != nil and researchArticleSwitchCSS != true -%}{% assign researchArticleSwitchCSS = true %}
+    {% comment %} <!-- Preload Research Styles -->{% endcomment %}
+<link rel="preload" href="/assets/css/features/buttonTypes/buttons.min.css" as="style">
+<link rel="preload" href="/assets/css/features/feeds-and-pulls/research.min.css" as="style">
+    {% comment %} <!-- Research Article Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="/assets/css/features/feeds-and-pulls/article.min.css" />
+<link href="https://casit.illinoisstate.edu/cdn/css/faculty-staff-jekyll-2.0.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.illinoisstate.edu/css/common/easy-responsive-tabs/1.4/easy-responsive-tabs.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="/assets/css/features/buttonTypes/buttons.min.css" />
+{%- endif %}
+
+{%- if buildPageFeatureData.eventsWebV3 != nil and newsEventsSwitchCSS != true or buildPageFeatureData.newsWebV3 and newsEventsSwitchCSS -%}{% assign newsEventsSwitchCSS = true %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/feeds-and-pulls/news-and-events.min.css" />
+{%- endif %}
+
+{%- if buildPageFeatureData.programs != nil and programsSwitchCSS != true -%}{% assign programsSwitchCSS = true %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/feeds-and-pulls/major-minor-feeds.min.css" />
+<link href="//cdn.illinoisstate.edu/css/common/easy-responsive-tabs/1.4/easy-responsive-tabs.css" rel="stylesheet" media="screen" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/pageTabs.min.css" />
+{%- endif %}
+
+{%- if buildPageFeatureData.twitterFeed != nil and twitterFeedSwitchCSS != true -%}{% assign twitterFeedSwitchCSS = true %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/feeds-and-pulls/twitter-feed.min.css" />
+{%- endif %}
+
+
+{%- endfor- %}
+
+{%comment%}
+##############################
+    Snippets Tiggered CSS sheets
+##############################
+{%endcomment%}
+{% assign buildPageSnippetArray = page.snippets %}
+{%comment%} Here we are searching the building page what snippets are going to be built so we can bring in the appropraite styles. {%endcomment%}
+{%- for buildPageSnippetData in buildPageSnippetArray -%}
+{% comment %}
+##########
+BUTTON TYPES
+##########
+{% endcomment %}
+    {%- if buildPageSnippetData.subNav != nil -%}
+        {% comment %} <!-- subNav Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/sub-nav.min.css" />
+    {%- endif %}
+{% comment %}
+##########
+CONTENT BLOCKS
+##########
+{% endcomment %}
+    {%- if buildPageSnippetData.aside != nil -%}
+        {% comment %} <!-- accordion Styles -->{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/aside.min.css" />
+    {%- endif %}
+{% comment %}
+##########
+FEEDS & PULLS
+##########
+{% endcomment %}
+{%- endfor -%}
+
+
+{%comment%}
+##############################
+LEAGACY CSS style sheets 
+##############################
+This is where we do some 1337 haxorz 👩‍💻👨‍💻 to try to fix the bane of all existance IE.
+We stopped trying to develop for this but we do have some styles already up just to keep it up... for now. 
+😂 😁 🎉 🥳 🎊 🥂
+One day, one day it will fully be no more!! Goodbye Internet🌐Exploder💥
+{# <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/all-ie-only.css" /> #}
+{%endcomment%}
+
+
+
+
+{% comment %}
+##########
+    Everything bellow is Pre-Git Jekyll way to include styles 
+        -- One must go through and remove any duplicates that are not needed. --
+        -- There might be some styles that have not gotten integrated so we should keep it for the time being. --
+##########
+{% endcomment %}
+
+{% comment %}<!-- <link rel="" href=""> -->{% endcomment %}
+
+
+
+{% comment %} <!-- COPY PASTA FOR NEW FEATURE -->{% endcomment %}
+{% comment %}
+{% if page.features. != nil or page.features.alpha. != nil or page.features.pre. != nil or page.features.post. != nil or page.features.omega. != nil %}{% endif %}
+{% endcomment %}
+
+{% if page.features.sub-navs != nil or page.features.alpha.sub-navs != nil or page.features.pre.sub-navs != nil or page.features.post.sub-navs != nil or page.features.omega.sub-navs != nil %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/sub-nav.min.css" />
+{% endif %}
+
+{% if page.features.bannerButtons != nil or page.features.alpha.bannerButtons != nil or page.features.pre.bannerButtons != nil or page.features.post.bannerButtons != nil or page.features.omega.bannerButtons != nil %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/buttons.min.css" />
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/bannerButtons.min.css" />
+{% endif %}
+
+{% if page.features.bannerImageButtons != nil or page.features.alpha.bannerImageButtons != nil or page.features.pre.bannerImageButtons != nil or page.features.post.bannerImageButtons != nil or page.features.omega.bannerImageButtons != nil %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/buttons.min.css" />
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/bannerImageButtons.min.css" />
+{% endif %}
+
+{% if page.features.minor-pull == true or page.features.alpha.minor-pull == true or page.features.pre.minor-pull == true or page.features.post.minor-pull == true or page.features.omega.minor-pull == true %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/feeds-and-pulls/major-minor-feeds.min.css" />{% endif %}
+
+{% if page.features.major-pull == true or page.features.alpha.major-pull == true or page.features.pre.major-pull == true or page.features.post.major-pull == true or page.features.omega.major-pull == true %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/feeds-and-pulls/major-minor-feeds.min.css" />{% endif %}
+
+{% if page.features.graduate-pull == true or page.features.alpha.graduate-pull == true or page.features.pre.graduate-pull == true or page.features.post.graduate-pull == true or page.features.omega.graduate-pull == true %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/feeds-and-pulls/major-minor-feeds.min.css" />{% endif %}
+
+{% if page.features.programs == true or page.features.alpha.programs == true or page.features.pre.programs == true or page.features.post.programs == true or page.features.omega.programs == true %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/feeds-and-pulls/major-minor-feeds.min.css" />
+<link href="//cdn.illinoisstate.edu/css/common/easy-responsive-tabs/1.4/easy-responsive-tabs.css" rel="stylesheet" media="screen" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/pageTabs.min.css" />
+{% endif %}
+
+{% if page.features.callToActionCards != nil or page.features.alpha.callToActionCards != nil or page.features.pre.callToActionCards != nil or page.features.post.callToActionCards != nil or page.features.omega.callToActionCards != nil %}
+<link rel="stylesheet" href="{{site.baseurl}}/assets/css/features/contentBlocks/callToAction.min.css"/>
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/buttons.min.css" />
+{% endif %}
+
+{% if page.features.emeritus != nil or page.features.alpha.emeritus != nil or page.features.pre.emeritus != nil or page.features.post.emeritus != nil or page.features.omega.emeritus != nil %}
+<link rel="stylesheet" href="{{site.baseurl}}/assets/css/features/contentBlocks/emeritus.min.css"/>
+{% endif %}
+
+{% if page.features.faculty-and-staff != nil or page.features.alpha.faculty-and-staff != nil or page.features.pre.faculty-and-staff != nil or page.features.post.faculty-and-staff != nil or page.features.omega.faculty-and-staff != nil %}
+{% comment %} <!-- Faculty-and-staff Styles -->{% endcomment %}
+<link href="https://casit.illinoisstate.edu/cdn/css/faculty-staff-jekyll-2.0.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.illinoisstate.edu/css/common/easy-responsive-tabs/1.4/easy-responsive-tabs.css" rel="stylesheet"/>
+{% endif %}
+
+{% if page.features.faculty != nil or page.features.alpha.faculty != nil or page.features.pre.faculty != nil or page.features.post.faculty != nil or page.features.omega.faculty != nil %}
+{% comment %} <!-- Faculty-and-staff Styles -->{% endcomment %}
+<link href="https://casit.illinoisstate.edu/cdn/css/faculty-staff-jekyll-2.0.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.illinoisstate.edu/css/common/easy-responsive-tabs/1.4/easy-responsive-tabs.css" rel="stylesheet"/>
+{% endif %}
+
+{% if page.features.faculty-profile != nil or page.features.alpha.faculty-profile != nil or page.features.pre.faculty-profile != nil or page.features.post.faculty-profile != nil or page.features.omega.faculty-profile != nil %}
+{% comment %} <!-- Faculty-and-staff Styles -->{% endcomment %}
+<link href="https://casit.illinoisstate.edu/cdn/css/faculty-staff-jekyll-2.0.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.illinoisstate.edu/css/common/easy-responsive-tabs/1.4/easy-responsive-tabs.css" rel="stylesheet"/>
+{% endif %}
+
+{% if page.features.twitter-feed != nil or page.features.alpha.twitter-feed != nil or page.features.pre.twitter-feed != nil or page.features.post.twitter-feed != nil or page.features.omega.twitter-feed != nil %}
+{% comment %} <!-- Twitter Feed Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/feeds-and-pulls/twitter-feed.min.css" />
+{% endif %}
+
+{% if page.features.slider != nil or page.features.alpha.slider != nil or page.features.pre.slider != nil or page.features.post.slider != nil or page.features.omega.slider != nil %}
+{% comment %} <!-- slider Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/slider/slick-theme.min.css" />
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/slider/slick.min.css" />
+{% endif %}
+
+{% if page.features.carousel != nil or page.features.alpha.carousel != nil or page.features.pre.carousel != nil or page.features.post.carousel != nil or page.features.omega.carousel != nil %}
+{% comment %} <!-- Carousel Styles -->{% endcomment %}
+<link rel="stylesheet" href="{{site.baseurl}}/assets/css/features/contentBlocks/photoswipe.min.css"/>
+<link rel="stylesheet" href="{{site.baseurl}}/assets/css/features/contentBlocks/carousel.min.css"/>
+<!-- <link rel="stylesheet" href="/assets/css/features/contentBlocks/infinite-slider.min.css"/> -->
+{% endif %}
+
+{% if page.features.imageButtons != nil or page.features.alpha.imageButtons != nil or page.features.pre.imageButtons != nil or page.features.post.imageButtons != nil or page.features.omega.imageButtons != nil %}
+{% comment %} <!-- imageButtons Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/imageButtons.min.css" />
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/buttons.min.css" />
+{% endif %}
+
+{% if page.features.pageTabs != nil or page.features.alpha.pageTabs != nil or page.features.pre.pageTabs != nil or page.features.post.pageTabs != nil or page.features.omega.pageTabs != nil %}
+{% comment %} <!-- pageTabs Styles -->{% endcomment %}
+<link href="//cdn.illinoisstate.edu/css/common/easy-responsive-tabs/1.4/easy-responsive-tabs.css" rel="stylesheet" media="screen" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/pageTabs.min.css" />
+{% endif %}
+
+{% if page.features.makeAGift != nil or page.features.alpha.makeAGift != nil or page.features.pre.makeAGift != nil or page.features.post.makeAGift != nil or page.features.omega.makeAGift != nil %}
+{% comment %} <!-- makeAGift Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/makeAGift.min.css" />
+{% endif %}
+
+{% if page.features.quick-link != nil or page.features.alpha.quick-link != nil or page.features.pre.quick-link != nil or page.features.post.quick-link != nil or page.features.omega.quick-link != nil %}
+{% comment %} <!-- quick-link Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/quick-link.min.css" />
+{% endif %}
+
+{% if page.features.accordions != nil or page.features.alpha.accordions != nil or page.features.pre.accordions != nil or page.features.post.accordions != nil or page.features.omega.accordions != nil %}
+{% comment %} <!-- accordion Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/accordion.min.css" />
+{% endif %}
+
+{% if page.features.aside != nil or page.features.alpha.aside != nil or page.features.pre.aside != nil or page.features.post.aside != nil or page.features.omega.aside != nil %}
+{% comment %} <!-- aside Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/aside.min.css" />
+{% endif %}
+
+{% if page.features.atoz != nil or page.features.alpha.atoz != nil or page.features.pre.atoz != nil or page.features.post.atoz != nil or page.features.omega.atoz != nil %}
+{% comment %} <!-- atoz Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/atoz.min.css" />
+{% endif %}
+
+{% if page.features.atoz-markdown != nil or page.features.alpha.atoz-markdown != nil or page.features.pre.atoz-markdown != nil or page.features.post.atoz-markdown != nil or page.features.omega.atoz-markdown != nil %}
+{% comment %} <!-- atoz Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/atoz.min.css" />
+{% endif %}
+
+{% if page.features.atoz-json != nil or page.features.alpha.atoz-json != nil or page.features.pre.atoz-json != nil or page.features.post.atoz-json != nil or page.features.omega.atoz-json != nil %}
+{% comment %} <!-- atoz Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/atoz.min.css" />
+{% endif %}
+
+{% if page.features.billboard != nil or page.features.alpha.billboard != nil or page.features.pre.billboard != nil or page.features.post.billboard != nil or page.features.omega.billboard != nil %}
+{% comment %} <!-- billboard Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/billboard.min.css" />
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/buttonTypes/buttons.min.css" />
+{% endif %}
+
+{% if page.features.hero-image != nil or page.features.alpha.hero-image != nil or page.features.pre.hero-image != nil or page.features.post.hero-image != nil or page.features.omega.hero-image != nil %}
+{% comment %} <!-- hero-image Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/hero-image.min.css" />
+{% endif %}
+
+{% if page.features.bioCards != nil or page.features.alpha.bioCards != nil or page.features.pre.bioCards != nil or page.features.post.bioCards != nil or page.features.omega.bioCards != nil %}
+{% comment %} <!-- bioCards Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/bioCards.min.css" />
+{% endif %}
+
+{% if page.features.contactCards != nil or page.features.alpha.contactCards != nil or page.features.pre.contactCards != nil or page.features.post.contactCards != nil or page.features.omega.contactCards != nil %}
+{% comment %} <!-- contactCards Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/contactCards.min.css" />
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/all-ie-only.css" />
+{% endif %}
+
+{% if page.features.faceList != nil or page.features.alpha.faceList != nil or page.features.pre.faceList != nil or page.features.post.faceList != nil or page.features.omega.faceList != nil %}
+{% comment %} <!-- faceList Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/faceList.min.css" />
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/all-ie-only.css" />
+{% endif %}
+
+{% if page.features.flipCards != nil or page.features.alpha.flipCards != nil or page.features.pre.flipCards != nil or page.features.post.flipCards != nil or page.features.omega.flipCards != nil %}
+{% comment %} <!-- flipCards Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/flipCards.min.css" />
+{% endif %}
+
+{% if page.features.one-3_Card != nil or page.features.alpha.one-3_Card != nil or page.features.pre.one-3_Card != nil or page.features.post.one-3_Card != nil or page.features.omega.one-3_Card != nil %}
+{% comment %} <!-- one-3_card Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/one-3_Card.min.css" />
+{% endif %}
+
+{% if page.features.image-text != nil or page.features.alpha.image-text != nil or page.features.pre.image-text != nil or page.features.post.image-text != nil or page.features.omega.image-text != nil %}
+{% comment %} <!-- image-text Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/image-text.min.css" />
+{% endif %}
+
+{% if page.features.text-image != nil or page.features.alpha.text-image != nil or page.features.pre.text-image != nil or page.features.post.text-image != nil or page.features.omega.text-image != nil %}
+{% comment %} <!-- text-image Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/text-image.min.css" />
+{% endif %}
+
+{% if page.features.video-text != nil or page.features.alpha.video-text != nil or page.features.pre.video-text != nil or page.features.post.video-text != nil or page.features.omega.video-text != nil %}
+{% comment %}<!-- image-text Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/video-text.min.css" />
+{% endif %}
+
+{% if page.features.text-video != nil or page.features.alpha.text-video != nil or page.features.pre.text-video != nil or page.features.post.text-video != nil or page.features.omega.text-video != nil %}
+{% comment %}<!-- text-video Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/text-video.min.css" />
+{% endif %}
+
+{% if page.features.single-textBlock != nil or page.features.alpha.single-textBlock != nil or page.features.pre.single-textBlock != nil or page.features.post.single-textBlock != nil or page.features.omega.single-textBlock != nil %}
+{% comment %} <!-- single-textBlock Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/single-textBlock.min.css" />
+{% endif %}
+
+{% if page.features.threeColumn-reactive != nil or page.features.alpha.threeColumn-reactive != nil or page.features.pre.threeColumn-reactive != nil or page.features.post.threeColumn-reactive != nil or page.features.omega.threeColumn-reactive != nil %}
+{% comment %} <!-- threeColumn-reactive Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/threeColumn-reactive.min.css" />
+{% endif %}
+
+{% if page.features.twoColumn-fixed != nil or page.features.alpha.twoColumn-fixed != nil or page.features.pre.twoColumn-fixed != nil or page.features.post.twoColumn-fixed != nil or page.features.omega.twoColumn-fixed != nil %}
+{% comment %} <!-- twoColumn-fixed Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/twoColumn-fixed.min.css" />
+{% endif %}
+
+{% if page.features.twoColumn-reactive != nil or page.features.alpha.twoColumn-reactive != nil or page.features.pre.twoColumn-reactive != nil or page.features.post.twoColumn-reactive != nil or page.features.omega.twoColumn-reactive != nil %}
+{% comment %} <!-- twoColumn-reactive Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/twoColumn-reactive.min.css" />
+{% endif %}
+
+{% if page.features.quote != nil or page.features.alpha.quote != nil or page.features.pre.quote != nil or page.features.post.quote != nil or page.features.omega.quote != nil %}
+{% comment %} <!-- quote Styles -->{% endcomment %}
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/features/contentBlocks/quote.min.css" />
+{% endif %}
+
+
